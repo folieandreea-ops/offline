@@ -14,24 +14,26 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
             position: relative;
+            overflow-x: hidden;
         }
         /* Meniul/Link-ul din dreapta sus */
         .nav-right {
             position: fixed;
-            top: 30px;
-            right: 30px;
+            top: 20px;
+            right: 20px;
             display: flex;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
             z-index: 100;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 5px 10px;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 6px 12px;
             backdrop-filter: blur(5px);
+            border-radius: 30px;
         }
         .nav-link {
             color: #a0a0a0;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: color 0.3s ease;
         }
         .nav-link:hover {
@@ -40,10 +42,10 @@
         .instagram-btn {
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 8px 18px;
+            padding: 6px 14px;
             border-radius: 30px;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
         }
@@ -61,11 +63,12 @@
             align-items: center;
             text-align: center;
             padding: 20px;
+            box-sizing: border-box;
         }
         .hero-text {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            line-height: 1.4;
+            line-height: 1.3;
             color: #ffffff;
             letter-spacing: -0.5px;
             margin: 0 0 20px 0;
@@ -75,7 +78,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Subtitlul adăugat sub titlul principal */
         .hero-subtitle {
             font-size: 1.15rem;
             color: #a0a0a0;
@@ -83,16 +85,17 @@
             line-height: 1.6;
             margin: 0;
         }
-        /* Secțiunea Why Offline? (Stânga text, Dreapta poză) */
+        /* Secțiunea Why Offline? */
         .details-section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            padding: 100px 50px 40px 50px;
+            padding: 120px 40px 40px 40px;
             max-width: 1200px;
             margin: 0 auto;
+            box-sizing: border-box;
         }
         .details-grid {
             display: grid;
@@ -124,7 +127,6 @@
             line-height: 1.6;
             margin: 0;
         }
-        /* Poza din dreapta textului */
         .details-image-container img {
             width: 100%;
             height: auto;
@@ -133,16 +135,45 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        /* Logo-ul la subsol (Footer) */
         .footer-logo {
             text-align: center;
-            padding: 20px 0;
+            padding: 30px 0;
             width: 100%;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         .footer-logo img {
-            max-width: 160px;
+            max-width: 150px;
             height: auto;
+        }
+
+        /* --- OPTIMIZARE PENTRU TELEFOANE (MOBILE RESPONSIVE) --- */
+        @media (max-width: 768px) {
+            .hero-text {
+                font-size: 2rem; /* Titlu mai mic adaptat ecranului de telefon */
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+            .details-section {
+                padding: 100px 20px 30px 20px;
+            }
+            .details-grid {
+                grid-template-columns: 1fr; /* Transformă cele 2 coloane într-una singură */
+                gap: 40px;
+            }
+            .details-content h2 {
+                text-align: center;
+                font-size: 1.8rem;
+            }
+            .reason-box {
+                text-align: center; /* Centrează textul pe mobil pentru un aspect mai curat */
+            }
+            .nav-right {
+                top: 15px;
+                right: 15px;
+                padding: 4px 10px;
+            }
         }
     </style>
 </head>
@@ -164,7 +195,7 @@
         </p>
     </div>
 
-    <!-- Secțiunea Why Offline? (Stânga text, Dreapta poză) -->
+    <!-- Secțiunea Why Offline? -->
     <div id="why-offline" class="details-section">
         <div class="details-grid">
             
