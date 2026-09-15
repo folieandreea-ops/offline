@@ -58,7 +58,7 @@
             top: 20px;
             right: 20px;
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
             z-index: 100;
             background: rgba(0, 0, 0, 0.85);
@@ -69,7 +69,7 @@
         .nav-link {
             color: #a0a0a0;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: color 0.3s ease;
         }
         .nav-link:hover {
@@ -80,9 +80,9 @@
             background: transparent;
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 30px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -143,7 +143,7 @@
             box-shadow: 0 15px 25px rgba(255, 42, 133, 0.4);
         }
 
-        /* Secțiunea Why Offline? și Cine suntem (Grilă comună pentru simetrie) */
+        /* Secțiunile detaliate (Grilă comună pentru simetrie) */
         .details-section {
             display: flex;
             flex-direction: column;
@@ -211,21 +211,21 @@
             object-position: center 40%;
         }
 
-        /* Secțiunea Cine suntem */
-        .about-section {
+        /* Stil comun pentru secțiunile text simple */
+        .text-section {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 40px 100px 40px;
+            padding: 60px 40px 60px 40px;
             box-sizing: border-box;
         }
-        .about-content-inner h2 {
+        .text-content-inner h2 {
             font-size: 2.2rem;
             margin-bottom: 25px;
             color: #ffffff;
             text-align: left;
         }
-        .about-content-inner p {
+        .text-content-inner p {
             color: #a0a0a0;
             font-size: 1.15rem;
             line-height: 1.8;
@@ -236,7 +236,7 @@
         /* Subsolul paginii centrat */
         .footer-logo {
             text-align: center;
-            padding: 30px 0;
+            padding: 40px 0;
             width: 100%;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
@@ -278,7 +278,7 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            .details-content h2, .about-content-inner h2 {
+            .details-content h2, .text-content-inner h2 {
                 text-align: center;
                 font-size: 1.8rem;
                 margin-bottom: 25px;
@@ -291,10 +291,10 @@
                 width: 100%;
                 object-fit: cover;
             }
-            .about-section {
-                padding: 40px 20px 80px 20px;
+            .text-section {
+                padding: 40px 20px 40px 20px;
             }
-            .about-content-inner p {
+            .text-content-inner p {
                 font-size: 1.05rem;
                 text-align: left;
             }
@@ -310,7 +310,10 @@
                 top: 15px;
                 right: 15px;
                 padding: 4px 8px;
-                gap: 6px;
+                gap: 5px;
+            }
+            .nav-link {
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -329,10 +332,11 @@
         </a>
     </div>
 
-    <!-- Meniul din dreapta sus (Limba, Cine suntem și Why Offline?) -->
+    <!-- Meniul din dreapta sus (Limba, Cine suntem, Misiunea Offline și Why Offline?) -->
     <div class="nav-right">
         <button class="lang-btn" id="langToggle" onclick="switchLanguage()">EN</button>
         <a href="#cine-suntem" class="nav-link" id="navAbout">Cine suntem</a>
+        <a href="#misiunea" class="nav-link" id="navMission">Misiunea</a>
         <a href="#why-offline" class="nav-link" id="navWhy">Why Offline?</a>
     </div>
 
@@ -345,6 +349,22 @@
             Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.
         </p>
         <a href="https://www.instagram.com/getoffline404" target="_blank" class="cta-btn" id="ctaButton">Descoperă următoarea întâlnire</a>
+    </div>
+
+    <!-- Secțiunea Cine suntem -->
+    <div id="cine-suntem" class="text-section" style="padding-top: 100px;">
+        <div class="text-content-inner">
+            <h2 id="aboutTitle">Cine <span class="spark">suntem</span></h2>
+            <p id="aboutText">Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul telefonului. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.</p>
+        </div>
+    </div>
+
+    <!-- Secțiunea Nouă: Misiunea Offline -->
+    <div id="misiunea" class="text-section">
+        <div class="text-content-inner">
+            <h2 id="missionTitle">Misiunea <span class="spark">Offline</span></h2>
+            <p id="missionText">Ne propunem să scoatem oamenii din ecrane și să îi aducem împreună în spații gândite special pentru interacțiuni autentice. Credem că magia se întâmplă atunci când lași telefonul în geantă, te uiți în ochii celuilalt și lași conversația să curgă natural, fără filtre și fără presiune.</p>
+        </div>
     </div>
 
     <!-- Secțiunea Why Offline? -->
@@ -379,21 +399,16 @@
         </div>
     </div>
 
-    <!-- Secțiunea Cine suntem -->
-    <div id="cine-suntem" class="about-section details-section" style="padding-top: 60px;">
-        <div class="details-grid">
-            
-            <!-- Stânga: Textul Cine suntem -->
-            <div class="about-content-inner">
-                <h2 id="aboutTitle">Cine <span class="spark">suntem</span></h2>
-                <p id="aboutText">Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul telefonului. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.</p>
+    <!-- Secțiunea cu imaginea date.jpeg -->
+    <div class="text-section" style="padding-bottom: 120px;">
+        <div class="details-grid" style="align-items: center;">
+            <div class="text-content-inner">
+                <h2 id="experienceTitle">Conexiune <span class="spark">pe bune</span></h2>
+                <p id="experienceText">Fiecare eveniment este o oportunitate de a ieși din rutină, de a descoperi perspective noi și de a lega prietenii sau povești care merită trăite dincolo de mediul digital.</p>
             </div>
-
-            <!-- Dreapta: Imaginea date.jpeg (sau poți schimba și aici dacă dorești) -->
             <div class="details-image-container">
-                <img src="date.jpeg" alt="Andreea și Ana">
+                <img src="date.jpeg" alt="Offline Comunitate">
             </div>
-
         </div>
     </div>
 
@@ -403,7 +418,7 @@
         <a href="terms.html" class="terms-link" id="termsText">Termeni și Condiții</a>
     </div>
 
-    <!-- Script simplu pentru comutarea instantă a limbilor (RO / EN) -->
+    <!-- Script complet pentru comutarea instantă a limbilor (RO / EN) -->
     <script>
         let currentLang = 'ro';
 
@@ -411,10 +426,15 @@
             ro: {
                 langBtn: "EN",
                 navAbout: "Cine suntem",
+                navMission: "Misiunea",
                 navWhy: "Why Offline?",
                 heroTitle: "Mai puțin scroll.<br>Mai mult <span class='spark'>spark.</span>",
                 heroSubtitle: "Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.",
                 ctaBtn: "Descoperă următoarea întâlnire",
+                aboutTitle: 'Cine <span class="spark">suntem</span>',
+                aboutText: "Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul telefonului. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.",
+                missionTitle: 'Misiunea <span class="spark">Offline</span>',
+                missionText: "Ne propunem să scoatem oamenii din ecrane și să îi aducem împreună în spații gândite special pentru interacțiuni autentice. Credem că magia se întâmplă atunci când lași telefonul în geantă, te uiți în ochii celuilalt și lași conversația să curgă natural, fără filtre și fără presiune.",
                 sectionTitle: 'Why <span class="spark">Offline?</span>',
                 r1Title: "Oboseala de aplicații (Swipe Fatigue)",
                 r1Text: "Din frustrarea generată de conversațiile sterile online, care rareori devin întâlniri reale.",
@@ -422,17 +442,22 @@
                 r2Text: "În afara cluburilor aglomerate sau a barurilor gălăgioase, e greu să găsești un loc unde să poți purta o conversație reală cu un străin fără să fie ciudat sau stânjenitor.",
                 r3Title: "Nevoia de prezență",
                 r3Text: "Din dorința de a trăi momente pe care nu le postezi pentru validare, ci le simți — fără notificări, fără filtre și fără algoritmi.",
-                aboutTitle: 'Cine <span class="spark">suntem</span>',
-                aboutText: "Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul telefonului. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.",
+                experienceTitle: 'Conexiune <span class="spark">pe bune</span>',
+                experienceText: "Fiecare eveniment este o oportunitate de a ieși din rutină, de a descoperi perspective noi și de a lega prietenii sau povești care merită trăite dincolo de mediul digital.",
                 terms: "Termeni și Condiții"
             },
             en: {
                 langBtn: "RO",
                 navAbout: "Who we are",
+                navMission: "Mission",
                 navWhy: "Why Offline?",
                 heroTitle: "Less scroll.<br>More <span class='spark'>spark.</span>",
                 heroSubtitle: "Two hours away from screens. New people, honest conversations, and room for a connection that starts in real life.",
                 ctaBtn: "Discover the next meetup",
+                aboutTitle: 'Who <span class="spark">we are</span>',
+                aboutText: "Andreea and Ana! We refused to accept that modern socialization has to come down to a phone screen. We are the team creating a warm, safe, and welcoming sanctuary for anyone looking for real people, sincere discussions, and an unmasked atmosphere.",
+                missionTitle: 'Offline <span class="spark">Mission</span>',
+                missionText: "Our mission is to bring people out of their screens and together in spaces designed specifically for authentic interactions. We believe magic happens when you put your phone away, look each other in the eye, and let the conversation flow naturally, without filters or pressure.",
                 sectionTitle: 'Why <span class="spark">Offline?</span>',
                 r1Title: "Swipe Fatigue",
                 r1Text: "Born from the frustration of sterile online chats that rarely turn into real-life meetups.",
@@ -440,8 +465,8 @@
                 r2Text: "Outside of crowded clubs or loud bars, it's hard to find a place where you can have a real conversation with a stranger without it feeling awkward.",
                 r3Title: "The Need for Presence",
                 r3Text: "Driven by the desire to live moments you feel rather than post for validation — no notifications, no filters, and no algorithms.",
-                aboutTitle: 'Who <span class="spark">we are</span>',
-                aboutText: "Andreea and Ana! We refused to accept that modern socialization has to come down to a phone screen. We are the team creating a warm, safe, and welcoming sanctuary for anyone looking for real people, sincere discussions, and an unmasked atmosphere.",
+                experienceTitle: 'Real <span class="spark">Connection</span>',
+                experienceText: "Every event is an opportunity to break out of routine, discover new perspectives, and build friendships or stories worth living beyond the digital world.",
                 terms: "Terms and Conditions"
             }
         };
@@ -452,10 +477,15 @@
 
             document.getElementById('langToggle').innerHTML = t.langBtn;
             document.getElementById('navAbout').innerHTML = t.navAbout;
+            document.getElementById('navMission').innerHTML = t.navMission;
             document.getElementById('navWhy').innerHTML = t.navWhy;
             document.getElementById('heroTitle').innerHTML = t.heroTitle;
             document.getElementById('heroSubtitle').innerHTML = t.heroSubtitle;
             document.getElementById('ctaButton').innerHTML = t.ctaBtn;
+            document.getElementById('aboutTitle').innerHTML = t.aboutTitle;
+            document.getElementById('aboutText').innerHTML = t.aboutText;
+            document.getElementById('missionTitle').innerHTML = t.missionTitle;
+            document.getElementById('missionText').innerHTML = t.missionText;
             document.getElementById('sectionTitle').innerHTML = t.sectionTitle;
             document.getElementById('reason1Title').innerHTML = t.r1Title;
             document.getElementById('reason1Text').innerHTML = t.r1Text;
@@ -463,8 +493,8 @@
             document.getElementById('reason2Text').innerHTML = t.r2Text;
             document.getElementById('reason3Title').innerHTML = t.r3Title;
             document.getElementById('reason3Text').innerHTML = t.r3Text;
-            document.getElementById('aboutTitle').innerHTML = t.aboutTitle;
-            document.getElementById('aboutText').innerHTML = t.aboutText;
+            document.getElementById('experienceTitle').innerHTML = t.experienceTitle;
+            document.getElementById('experienceText').innerHTML = t.experienceText;
             document.getElementById('termsText').innerHTML = t.terms;
 
             document.getElementById('html-root').setAttribute('lang', currentLang);
