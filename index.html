@@ -130,6 +130,7 @@
         .details-image-container img {
             width: 100%;
             height: auto;
+            max-height: 450px;
             border-radius: 12px;
             object-fit: cover;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -146,10 +147,10 @@
             height: auto;
         }
 
-        /* --- OPTIMIZARE PENTRU TELEFOANE (MOBILE RESPONSIVE) --- */
+        /* --- OPTIMIZARE PENTRU TELEFOANE --- */
         @media (max-width: 768px) {
             .hero-text {
-                font-size: 2rem; /* Titlu mai mic adaptat ecranului de telefon */
+                font-size: 2rem;
             }
             .hero-subtitle {
                 font-size: 1rem;
@@ -159,15 +160,22 @@
                 padding: 100px 20px 30px 20px;
             }
             .details-grid {
-                grid-template-columns: 1fr; /* Transformă cele 2 coloane într-una singură */
-                gap: 40px;
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
             .details-content h2 {
                 text-align: center;
                 font-size: 1.8rem;
+                margin-bottom: 25px;
             }
             .reason-box {
-                text-align: center; /* Centrează textul pe mobil pentru un aspect mai curat */
+                text-align: left; /* Lăsăm textul aliniat la stânga și pe mobil că e mai ușor de citit */
+            }
+            /* Controlăm exact cum arată poza pe mobil */
+            .details-image-container img {
+                max-height: 250px; /* O facem mai compactă pe ecran mic */
+                width: 100%;
+                object-fit: cover;
             }
             .nav-right {
                 top: 15px;
