@@ -50,16 +50,18 @@
         }
         /* Stilul pentru mesajul principal */
         .hero-text {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             line-height: 1.4;
             color: #ffffff;
             letter-spacing: -0.5px;
             margin: 0;
         }
-        /* Evidențierea cuvântului "spark" (dacă vrei să iasă în evidență) */
+        /* Efectul de gradient de la roz spre tonuri închise/negru pentru "spark" */
         .spark {
-            color: #ffffff; /* Poți schimba dacă logo-ul are un accent anume */
+            background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 50%, #441128 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
