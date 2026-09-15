@@ -193,34 +193,31 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Secțiunea Cine suntem (fără poză, design centrat și elegant) */
+        /* Secțiunea Cine suntem (curge natural, aliniată la stânga/centrat pe mobil) */
         .about-section {
             width: 100%;
-            max-width: 800px;
-            margin: 0 auto 80px auto;
-            padding: 0 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px 100px 40px;
             box-sizing: border-box;
-            text-align: center;
         }
-        .about-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 50px 40px;
-            backdrop-filter: blur(10px);
+        .about-content-inner {
+            max-width: 800px;
         }
-        .about-card h2 {
+        .about-content-inner h2 {
             font-size: 2.2rem;
             margin-bottom: 25px;
             background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 50%, #441128 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-align: left;
         }
-        .about-card p {
+        .about-content-inner p {
             color: #a0a0a0;
             font-size: 1.15rem;
             line-height: 1.8;
             margin: 0;
+            text-align: left;
         }
         
         /* Subsolul paginii centrat */
@@ -282,16 +279,15 @@
                 object-fit: cover;
             }
             .about-section {
-                padding: 0 20px;
+                padding: 40px 20px 80px 20px;
             }
-            .about-card {
-                padding: 30px 20px;
-            }
-            .about-card h2 {
+            .about-content-inner h2 {
                 font-size: 1.8rem;
+                text-align: left;
             }
-            .about-card p {
-                font-size: 1rem;
+            .about-content-inner p {
+                font-size: 1.05rem;
+                text-align: left;
             }
             .nav-left {
                 top: 15px;
@@ -374,9 +370,9 @@
         </div>
     </div>
 
-    <!-- Secțiunea Cine suntem (centrată, fără poză) -->
+    <!-- Secțiunea Cine suntem (curge natural, fără chenar sau card) -->
     <div id="cine-suntem" class="about-section">
-        <div class="about-card">
+        <div class="about-content-inner">
             <h2 id="aboutTitle">Cine suntem</h2>
             <p id="aboutText">Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul unui telefon. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.</p>
         </div>
