@@ -143,7 +143,7 @@
             box-shadow: 0 15px 25px rgba(255, 42, 133, 0.4);
         }
 
-        /* Secțiunea Why Offline? */
+        /* Secțiunea Why Offline? și Cine suntem (Grilă comună pentru simetrie) */
         .details-section {
             display: flex;
             flex-direction: column;
@@ -193,16 +193,13 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Secțiunea Cine suntem (curge natural) */
+        /* Secțiunea Cine suntem */
         .about-section {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 60px 40px 100px 40px;
             box-sizing: border-box;
-        }
-        .about-content-inner {
-            max-width: 800px;
         }
         .about-content-inner h2 {
             font-size: 2.2rem;
@@ -263,7 +260,7 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            .details-content h2 {
+            .details-content h2, .about-content-inner h2 {
                 text-align: center;
                 font-size: 1.8rem;
                 margin-bottom: 25px;
@@ -278,10 +275,6 @@
             }
             .about-section {
                 padding: 40px 20px 80px 20px;
-            }
-            .about-content-inner h2 {
-                font-size: 1.8rem;
-                text-align: left;
             }
             .about-content-inner p {
                 font-size: 1.05rem;
@@ -360,7 +353,7 @@
                 </div>
             </div>
 
-            <!-- Dreapta: Imaginea off.jpeg -->
+            <!-- Dreapta: Imaginea -->
             <div class="details-image-container">
                 <img src="off.jpeg" alt="Offline Vibe">
             </div>
@@ -368,11 +361,21 @@
         </div>
     </div>
 
-    <!-- Secțiunea Cine suntem (curge natural, fără chenar sau card) -->
-    <div id="cine-suntem" class="about-section">
-        <div class="about-content-inner">
-            <h2 id="aboutTitle">Cine <span class="spark">suntem</span></h2>
-            <p id="aboutText">Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul unui telefon. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.</p>
+    <!-- Secțiunea Cine suntem -->
+    <div id="cine-suntem" class="about-section details-section" style="padding-top: 60px;">
+        <div class="details-grid">
+            
+            <!-- Stânga: Textul Cine suntem -->
+            <div class="about-content-inner">
+                <h2 id="aboutTitle">Cine <span class="spark">suntem</span></h2>
+                <p id="aboutText">Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul unui telefon. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.</p>
+            </div>
+
+            <!-- Dreapta: Imaginea (poți folosi altă poză înlocuind off.jpeg dacă dorești) -->
+            <div class="details-image-container">
+                <img src="off.jpeg" alt="Andreea și Ana">
+            </div>
+
         </div>
     </div>
 
