@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="ro" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +39,22 @@
         .nav-link:hover {
             color: #ffffff;
         }
+        /* Butonul de schimbare a limbii stilizat curat */
+        .lang-btn {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
         .instagram-btn {
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -54,30 +70,6 @@
             color: #000000;
             border-color: #ffffff;
         }
-
-        /* Ascundem elementul clasic din meniu ca să lăsăm doar bara automată Google */
-        #google_translate_element {
-            display: none;
-        }
-
-        /* Stilizare personalizată pentru bara automată de traducere Google (Banner-ul de sus) */
-        .goog-te-banner-frame.skiptranslate {
-            display: block !important;
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            z-index: 999999 !important;
-            background-color: #111111 !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-        }
-        
-        /* Ajustăm corpul paginii când apare bara de sus de la Google */
-        body {
-            top: 40px !important;
-            position: relative;
-        }
-
         /* Prima secțiune (Hero) */
         .hero-section {
             height: 100vh;
@@ -204,7 +196,7 @@
                 top: 15px;
                 right: 15px;
                 padding: 4px 8px;
-                gap: 8px;
+                gap: 6px;
             }
         }
     </style>
@@ -213,17 +205,17 @@
 
     <!-- Meniul din dreapta sus -->
     <div class="nav-right">
-        <div id="google_translate_element"></div>
-        <a href="#why-offline" class="nav-link">Why Offline?</a>
+        <button class="lang-btn" id="langToggle" onclick="switchLanguage()">EN</button>
+        <a href="#why-offline" class="nav-link" id="navWhy">Why Offline?</a>
         <a href="https://www.instagram.com/getoffline404" target="_blank" class="instagram-btn">Instagram</a>
     </div>
 
     <!-- Prima secțiune (Hero) -->
     <div class="hero-section">
-        <h1 class="hero-text">
+        <h1 class="hero-text" id="heroTitle">
             Mai puțin scroll.<br>Mai mult <span class="spark">spark</span>.
         </h1>
-        <p class="hero-subtitle">
+        <p class="hero-subtitle" id="heroSubtitle">
             Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.
         </p>
     </div>
@@ -234,21 +226,21 @@
             
             <!-- Stânga: Textul explicativ -->
             <div class="details-content">
-                <h2>Why Offline?</h2>
+                <h2 id="sectionTitle">Why Offline?</h2>
                 
                 <div class="reason-box">
-                    <strong>Oboseala de aplicații (Swipe Fatigue)</strong>
-                    <p>Din frustrarea generată de conversațiile sterile online, care rareori devin întâlniri reale.</p>
+                    <strong id="reason1Title">Oboseala de aplicații (Swipe Fatigue)</strong>
+                    <p id="reason1Text">Din frustrarea generată de conversațiile sterile online, care rareori devin întâlniri reale.</p>
                 </div>
 
                 <div class="reason-box">
-                    <strong>Lipsa spațiilor de conectare autentică</strong>
-                    <p>În afara cluburilor aglomerate sau a barurilor gălăgioase, e greu să găsești un loc unde să poți purta o conversație reală cu un străin fără să fie ciudat sau stânjenitor.</p>
+                    <strong id="reason2Title">Lipsa spațiilor de conectare autentică</strong>
+                    <p id="reason2Text">În afara cluburilor aglomerate sau a barurilor gălăgioase, e greu să găsești un loc unde să poți purta o conversație reală cu un străin fără să fie ciudat sau stânjenitor.</p>
                 </div>
 
                 <div class="reason-box">
-                    <strong>Nevoia de prezență</strong>
-                    <p>Din dorința de a trăi momente pe care nu le postezi pentru validare, ci le simți — fără notificări, fără filtre și fără algoritmi.</p>
+                    <strong id="reason3Title">Nevoia de prezență</strong>
+                    <p id="reason3Text">Din dorința de a trăi momente pe care nu le postezi pentru validare, ci le simți — fără notificări, fără filtre și fără algoritmi.</p>
                 </div>
             </div>
 
@@ -265,17 +257,58 @@
         </div>
     </div>
 
-    <!-- Scriptul Google Translate cu afișare automată a opțiunii de traducere -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'ro',
-                includedLanguages: 'en,ro',
-                autoDisplay: true // Activează promptul automat de traducere oferit de Google
-            }, 'google_translate_element');
+    <!-- Script simplu pentru comutarea instantă a limbilor (RO / EN) -->
+    <script>
+        let currentLang = 'ro';
+
+        const texts = {
+            ro: {
+                langBtn: "EN",
+                navWhy: "Why Offline?",
+                heroTitle: "Mai puțin scroll.<br>Mai mult <span class='spark'>spark</span>.",
+                heroSubtitle: "Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.",
+                sectionTitle: "Why Offline?",
+                r1Title: "Oboseala de aplicații (Swipe Fatigue)",
+                r1Text: "Din frustrarea generată de conversațiile sterile online, care rareori devin întâlniri reale.",
+                r2Title: "Lipsa spațiilor de conectare autentică",
+                r2Text: "În afara cluburilor aglomerate sau a barurilor gălăgioase, e greu să găsești un loc unde să poți purta o conversație reală cu un străin fără să fie ciudat sau stânjenitor.",
+                r3Title: "Nevoia de prezență",
+                r3Text: "Din dorința de a trăi momente pe care nu le postezi pentru validare, ci le simți — fără notificări, fără filtre și fără algoritmi."
+            },
+            en: {
+                langBtn: "RO",
+                navWhy: "Why Offline?",
+                heroTitle: "Less scroll.<br>More <span class='spark'>spark</span>.",
+                heroSubtitle: "Two hours away from screens. New people, honest conversations, and room for a connection that starts in real life.",
+                sectionTitle: "Why Offline?",
+                r1Title: "Swipe Fatigue",
+                r1Text: "Born from the frustration of sterile online chats that rarely turn into real-life meetups.",
+                r2Title: "Lack of Authentic Spaces",
+                r2Text: "Outside of crowded clubs or loud bars, it's hard to find a place where you can have a real conversation with a stranger without it feeling awkward.",
+                r3Title: "The Need for Presence",
+                r3Text: "Driven by the desire to live moments you feel rather than post for validation — no notifications, no filters, and no algorithms."
+            }
+        };
+
+        function switchLanguage() {
+            currentLang = currentLang === 'ro' ? 'en' : 'ro';
+            const t = texts[currentLang];
+
+            document.getElementById('langToggle').innerHTML = t.langBtn;
+            document.getElementById('navWhy').innerHTML = t.navWhy;
+            document.getElementById('heroTitle').innerHTML = t.heroTitle;
+            document.getElementById('heroSubtitle').innerHTML = t.heroSubtitle;
+            document.getElementById('sectionTitle').innerHTML = t.sectionTitle;
+            document.getElementById('reason1Title').innerHTML = t.r1Title;
+            document.getElementById('reason1Text').innerHTML = t.r1Text;
+            document.getElementById('reason2Title').innerHTML = t.r2Title;
+            document.getElementById('reason2Text').innerHTML = t.r2Text;
+            document.getElementById('reason3Title').innerHTML = t.r3Title;
+            document.getElementById('reason3Text').innerHTML = t.r3Text;
+
+            document.getElementById('html-root').setAttribute('lang', currentLang);
         }
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
