@@ -6,14 +6,13 @@
     <title>Offline | Conectare reală în București</title>
     <style>
         html {
-            scroll-behavior: smooth; /* Asigură coborârea lină pe pagină */
+            scroll-behavior: smooth;
         }
         body {
             background-color: #000000;
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
-            text-align: center;
             position: relative;
         }
         /* Logo-ul oficial în stânga sus */
@@ -25,7 +24,7 @@
             height: auto;
             z-index: 100;
         }
-        /* Meniul/Link-ul din dreapta sus (Why Offline + Instagram) */
+        /* Meniul/Link-ul din dreapta sus */
         .nav-right {
             position: fixed;
             top: 30px;
@@ -59,13 +58,14 @@
             color: #000000;
             border-color: #ffffff;
         }
-        /* Secțiunea Hero (centrată pe ecran) */
+        /* Prima secțiune (Hero) */
         .hero-section {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
             padding: 20px;
         }
         .hero-text {
@@ -81,38 +81,53 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Secțiunea de jos: Why Offline? */
+        /* Secțiunea de jos: Why Offline? (Layout pe două coloane) */
         .details-section {
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            padding: 80px 20px;
-            max-width: 800px;
+            justify-content: center;
+            padding: 100px 50px;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+        .details-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 35px;
+            color: #ffffff;
             text-align: left;
         }
-        .details-section h2 {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            text-align: center;
-            color: #ffffff;
-        }
         .reason-box {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            text-align: left;
         }
         .reason-box strong {
             color: #ff75bc;
             font-size: 1.1rem;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .reason-box p {
             color: #a0a0a0;
-            font-size: 1.05rem;
+            font-size: 1rem;
             line-height: 1.6;
             margin: 0;
+        }
+        /* Stilul pentru poza din dreapta */
+        .details-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
@@ -123,7 +138,7 @@
         <img src="WhatsApp Image 2026-09-15 at 09.19.50.jpeg" alt="OFFLINE" class="brand-logo">
     </a>
 
-    <!-- Meniul din dreapta sus (Why Offline? + Buton Instagram) -->
+    <!-- Meniul din dreapta sus -->
     <div class="nav-right">
         <a href="#why-offline" class="nav-link">Why Offline?</a>
         <a href="https://www.instagram.com/getoffline404" target="_blank" class="instagram-btn">Instagram</a>
@@ -136,23 +151,36 @@
         </h1>
     </div>
 
-    <!-- Secțiunea extinsă: Why Offline? -->
+    <!-- Secțiunea Why Offline? (Stânga text, Dreapta poză) -->
     <div id="why-offline" class="details-section">
-        <h2>Why Offline?</h2>
-        
-        <div class="reason-box">
-            <strong>Oboseala de aplicații (Swipe Fatigue)</strong>
-            <p>Din frustrarea generată de conversațiile sterile online, care rareori devin întâlniri reale.</p>
-        </div>
+        <div class="details-grid">
+            
+            <!-- Stânga: Textul explicativ -->
+            <div class="details-content">
+                <h2>Why Offline?</h2>
+                
+                <div class="reason-box">
+                    <strong>Oboseala de aplicații (Swipe Fatigue)</strong>
+                    <p>Din frustrarea generată de conversațiile sterile online, care rareori devin întâlniri reale.</p>
+                </div>
 
-        <div class="reason-box">
-            <strong>Lipsa spațiilor de conectare autentică</strong>
-            <p>În afara cluburilor aglomerate sau a barurilor gălăgioase, e greu să găsești un loc unde să poți purta o conversație reală cu un străin fără să fie ciudat sau stânjenitor.</p>
-        </div>
+                <div class="reason-box">
+                    <strong>Lipsa spațiilor de conectare autentică</strong>
+                    <p>În afara cluburilor aglomerate sau a barurilor gălăgioase, e greu să găsești un loc unde să poți purta o conversație reală cu un străin fără să fie ciudat sau stânjenitor.</p>
+                </div>
 
-        <div class="reason-box">
-            <strong>Nevoia de prezență</strong>
-            <p>Din dorința de a trăi momente pe care nu le postezi pentru validare, ci le simți — fără notificări, fără filtre și fără algoritmi.</p>
+                <div class="reason-box">
+                    <strong>Nevoia de prezență</strong>
+                    <p>Din dorința de a trăi momente pe care nu le postezi pentru validare, ci le simți — fără notificări, fără filtre și fără algoritmi.</p>
+                </div>
+            </div>
+
+            <!-- Dreapta: Imaginea -->
+            <div class="details-image-container">
+                <!-- Înlocuiește 'nume-poza.jpg' cu numele exact al imaginii pe care o urci pe GitHub pentru această secțiune -->
+                <img src="nume-poza.jpg" alt="Offline Vibe">
+            </div>
+
         </div>
     </div>
 
