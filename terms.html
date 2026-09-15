@@ -1,50 +1,86 @@
 <!DOCTYPE html>
-<html lang="ro" id="terms-root">
+<html lang="ro" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Termeni și Condiții | Offline</title>
+    <title>Offline | Conectare reală în București</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             background-color: #000000;
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
-            padding: 40px 20px;
-            line-height: 1.6;
             position: relative;
+            overflow-x: hidden;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding-top: 20px;
-        }
-        /* Meniul de sus (Butonul de limbă și Înapoi) */
-        .top-nav {
+        /* Butonul de Instagram și Facebook în stânga sus cu sigle oficiale */
+        .nav-left {
+            position: fixed;
+            top: 20px;
+            left: 20px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 800px;
-            margin: 0 auto 30px auto;
+            gap: 10px;
+            z-index: 100;
         }
-        .back-link {
-            color: #ffffff;
-            text-decoration: none;
+        .social-icon-btn {
+            background: rgba(0, 0, 0, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            backdrop-filter: blur(5px);
             transition: all 0.3s ease;
         }
-        .back-link:hover {
-            background-color: #ffffff;
-            color: #000000;
+        .social-icon-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+            transition: fill 0.3s ease;
         }
+        .social-icon-btn:hover {
+            background-color: #ffffff;
+            border-color: #ffffff;
+        }
+        .social-icon-btn:hover svg {
+            fill: #000000;
+        }
+
+        /* Meniul/Link-urile din dreapta sus */
+        .nav-right {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 6px 12px;
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+        }
+        .nav-link {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+        }
+        /* Butonul de schimbare a limbii stilizat curat */
         .lang-btn {
             background: transparent;
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 30px;
             font-size: 0.85rem;
             cursor: pointer;
@@ -55,168 +91,396 @@
             color: #000000;
             border-color: #ffffff;
         }
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
+
+        /* Prima secțiune (Hero) */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .hero-text {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            margin: 0 0 20px 0;
+        }
+        .spark {
             background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 50%, #441128 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .update-date {
+        .hero-subtitle {
+            font-size: 1.15rem;
             color: #a0a0a0;
-            font-size: 0.9rem;
-            margin-bottom: 30px;
+            max-width: 600px;
+            line-height: 1.6;
+            margin: 0 0 30px 0;
         }
-        h2 {
-            font-size: 1.3rem;
+
+        /* Stilul butonului de Call to Action în culorile "spark" */
+        .cta-btn {
+            background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 100%);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(255, 42, 133, 0.3);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .cta-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(255, 42, 133, 0.4);
+        }
+
+        /* Secțiunea Why Offline? */
+        .details-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 120px 40px 40px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 60px;
+        }
+        .details-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 35px;
+            color: #ffffff;
+            text-align: left;
+        }
+        .reason-box {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .reason-box strong {
             color: #ff75bc;
-            margin-top: 30px;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 6px;
         }
-        p, li {
+        .reason-box p {
             color: #a0a0a0;
             font-size: 1rem;
-            margin-bottom: 15px;
+            line-height: 1.6;
+            margin: 0;
         }
-        ul {
-            padding-left: 20px;
+        .details-image-container img {
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        a.insta-link {
-            color: #ff75bc;
+
+        /* Secțiunea Nouă: Cine suntem */
+        .about-section {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 80px auto;
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+        .about-image-container img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .about-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #ffffff;
+            text-align: left;
+        }
+        .about-content p {
+            color: #a0a0a0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        /* Subsolul paginii centrat */
+        .footer-logo {
+            text-align: center;
+            padding: 30px 0;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .footer-logo img {
+            max-width: 150px;
+            height: auto;
+        }
+        .terms-link {
+            color: #a0a0a0;
+            font-size: 0.85rem;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
-        a.insta-link:hover {
-            text-decoration: underline;
+        .terms-link:hover {
+            color: #ffffff;
+        }
+
+        /* --- OPTIMIZARE PENTRU TELEFOANE --- */
+        @media (max-width: 768px) {
+            .hero-text {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+            .cta-btn {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
+            .details-section {
+                padding: 100px 20px 30px 20px;
+            }
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .details-content h2 {
+                text-align: center;
+                font-size: 1.8rem;
+                margin-bottom: 25px;
+            }
+            .reason-box {
+                text-align: left;
+            }
+            .details-image-container img {
+                max-height: 250px;
+                width: 100%;
+                object-fit: cover;
+            }
+            .about-section {
+                padding: 0 20px;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 25px;
+            }
+            .about-content h2 {
+                text-align: center;
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            .about-image-container img {
+                max-height: 250px;
+                width: 100%;
+                object-fit: cover;
+            }
+            .nav-left {
+                top: 15px;
+                left: 15px;
+            }
+            .social-icon-btn {
+                width: 34px;
+                height: 34px;
+            }
+            .nav-right {
+                top: 15px;
+                right: 15px;
+                padding: 4px 8px;
+                gap: 6px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-nav">
-        <a href="index.html" class="back-link" id="backLink">&larr; Înapoi la pagină</a>
+    <!-- Butonul de Instagram și Facebook în stânga sus cu sigle oficiale -->
+    <div class="nav-left">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/getoffline404" target="_blank" class="social-icon-btn" title="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com" target="_blank" class="social-icon-btn" title="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.37 14.5 5 15.5 5H18V0h-3.808C10.5 0 9 1.5 9 4.615V8z"/></svg>
+        </a>
+    </div>
+
+    <!-- Meniul din dreapta sus (Limba, Cine suntem și Why Offline?) -->
+    <div class="nav-right">
         <button class="lang-btn" id="langToggle" onclick="switchLanguage()">EN</button>
+        <a href="#cine-suntem" class="nav-link" id="navAbout">Cine suntem</a>
+        <a href="#why-offline" class="nav-link" id="navWhy">Why Offline?</a>
     </div>
 
-    <div class="container">
-        <h1 id="mainTitle">Termeni și Condiții</h1>
-        <div class="update-date" id="updateDate">Ultima actualizare: Septembrie 2026</div>
-
-        <h2 id="s1Title">1. Introducere</h2>
-        <p id="s1Text">Bun venit la <strong>Offline</strong>. Participarea la întâlnirile și evenimentele organizate de noi implică acceptarea acestor Termeni și Condiții. Te rugăm să îi citești cu atenție înainte de a te înscrie sau de a participa la evenimentele noastre din București.</p>
-
-        <h2 id="s2Title">2. Despre Evenimente</h2>
-        <p id="s2Text">Offline organizează întâlniri fizice dedicate interacțiunii umane directe, deconectării de la ecrane și construirii de conexiuni autentice. Participarea se face pe bază de înscriere prealabilă, în limita locurilor disponibile.</p>
-
-        <h2 id="s3Title">3. Codul de Conduită</h2>
-        <p id="s3Intro">Pentru a asigura un mediu sigur, plăcut și respectuos pentru toți participanții, ne rezervăm dreptul de a impune următoarele reguli:</p>
-        <ul>
-            <li><strong id="r1Title">Respect reciproc:</strong> <span id="r1Text">Orice formă de hărțuire, limbaj agresiv, comportament discriminatoriu sau lipsă de respect față de ceilalți participanți este strict interzisă.</span></li>
-            <li><strong id="r2Title">Siguranță și confort:</strong> <span id="r2Text">Participanții trebuie să respecte limitele celorlalți și să mențină o atmosferă caldă și deschisă.</span></li>
-            <li><span id="r3Text">Organizatorii își rezervă dreptul de a refuza participarea sau de a îndepărta de la eveniment orice persoană al cărei comportament încalcă aceste reguli, fără drept de rambursare (dacă este cazul).</span></li>
-        </ul>
-
-        <h2 id="s4Title">4. Anulări și Politica de Participare</h2>
-        <p id="s4Text">Dacă te-ai înscris la un eveniment și nu mai poți ajunge, te rugăm să ne anunți în timp util pentru a elibera locul pentru o altă persoană. Ne rezervăm dreptul de a modifica detaliile evenimentelor (locație, oră) în caz de situații neprevăzute, notificând participanții din timp.</p>
-
-        <h2 id="s5Title">5. Limitarea Răspunderii</h2>
-        <p id="s5Text">Participarea la evenimentele Offline se face pe propria răspundere. Organizatorii nu își asumă responsabilitatea pentru obiecte personale pierdute în cadrul locațiilor partenere și nici pentru interacțiunile ulterioare sau relațiile dezvoltate între participanți în afara cadrului organizat oficial.</p>
-
-        <h2 id="s6Title">6. Protecția Datelor (Confidențialitate)</h2>
-        <p id="s6Text">Datele colectate la înscriere (cum ar fi numele sau adresa de e-mail) sunt folosite exclusiv pentru organizarea evenimentelor Offline și comunicarea cu tine. Nu le vom oferi niciodată unor terți.</p>
-
-        <h2 id="s7Title">7. Contact</h2>
-        <p id="s7Text">Pentru orice întrebări sau nelămuriri legate de termeni sau evenimente, ne poți contacta direct prin intermediul paginii noastre de <a href="https://www.instagram.com/getoffline404" target="_blank" class="insta-link">Instagram</a>.</p>
+    <!-- Prima secțiune (Hero) -->
+    <div class="hero-section">
+        <h1 class="hero-text" id="heroTitle">
+            Mai puțin scroll.<br>Mai mult <span class="spark">spark.</span>
+        </h1>
+        <p class="hero-subtitle" id="heroSubtitle">
+            Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.
+        </p>
+        <a href="https://www.instagram.com/getoffline404" target="_blank" class="cta-btn" id="ctaButton">Descoperă următoarea întâlnire</a>
     </div>
 
+    <!-- Secțiunea Why Offline? -->
+    <div id="why-offline" class="details-section" style="min-height: auto; padding-top: 100px; padding-bottom: 60px;">
+        <div class="details-grid" style="margin-bottom: 0;">
+            
+            <!-- Stânga: Textul explicativ -->
+            <div class="details-content">
+                <h2 id="sectionTitle">Why Offline?</h2>
+                
+                <div class="reason-box">
+                    <strong id="reason1Title">Oboseala de aplicații (Swipe Fatigue)</strong>
+                    <p id="reason1Text">Din frustrarea generată de conversațiile sterile online, care rareori devin întâlniri reale.</p>
+                </div>
+
+                <div class="reason-box">
+                    <strong id="reason2Title">Lipsa spațiilor de conectare autentică</strong>
+                    <p id="reason2Text">În afara cluburilor aglomerate sau a barurilor gălăgioase, e greu să găsești un loc unde să poți purta o conversație reală cu un străin fără să fie ciudat sau stânjenitor.</p>
+                </div>
+
+                <div class="reason-box">
+                    <strong id="reason3Title">Nevoia de prezență</strong>
+                    <p id="reason3Text">Din dorința de a trăi momente pe care nu le postezi pentru validare, ci le simți — fără notificări, fără filtre și fără algoritmi.</p>
+                </div>
+            </div>
+
+            <!-- Dreapta: Imaginea off.jpeg -->
+            <div class="details-image-container">
+                <img src="off.jpeg" alt="Offline Vibe">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Secțiunea Cine suntem (imediat sub Why Offline) -->
+    <div id="cine-suntem" class="about-section">
+        <div class="about-grid">
+            <!-- Stânga: Fotografia voastră (inlocuiește "nume-poza.jpeg" cu numele fișierului vostru foto) -->
+            <div class="about-image-container">
+                <img src="nume-poza.jpeg" alt="Andreea și Ana - Offline">
+            </div>
+            <!-- Dreapta: Textul dedicat -->
+            <div class="about-content">
+                <h2 id="aboutTitle">Cine suntem</h2>
+                <p id="aboutText">Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul unui telefon. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricare caută oameni reali, discuții sincere și atmosferă fără mască.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logo-ul oficial și linkul de termeni centrate la subsol -->
+    <div class="footer-logo">
+        <img src="WhatsApp Image 2026-09-15 at 09.19.50.jpeg" alt="OFFLINE">
+        <a href="terms.html" class="terms-link" id="termsText">Termeni și Condiții</a>
+    </div>
+
+    <!-- Script simplu pentru comutarea instantă a limbilor (RO / EN) -->
     <script>
         let currentLang = 'ro';
 
-        const termsTexts = {
+        const texts = {
             ro: {
-                pageTitle: "Termeni și Condiții | Offline",
-                backLink: "&larr; Înapoi la pagină",
                 langBtn: "EN",
-                mainTitle: "Termeni și Condiții",
-                updateDate: "Ultima actualizare: Septembrie 2026",
-                s1Title: "1. Introducere",
-                s1Text: "Bun venit la <strong>Offline</strong>. Participarea la întâlnirile și evenimentele organizate de noi implică acceptarea acestor Termeni și Condiții. Te rugăm să îi citești cu atenție înainte de a te înscrie sau de a participa la evenimentele noastre din București.",
-                s2Title: "2. Despre Evenimente",
-                s2Text: "Offline organizează întâlniri fizice dedicate interacțiunii umane directe, deconectării de la ecrane și construirii de conexiuni autentice. Participarea se face pe bază de înscriere prealabilă, în limita locurilor disponibile.",
-                s3Title: "3. Codul de Conduită",
-                s3Intro: "Pentru a asigura un mediu sigur, plăcut și respectuos pentru toți participanții, ne rezervăm dreptul de a impune următoarele reguli:",
-                r1Title: "Respect reciproc:",
-                r1Text: "Orice formă de hărțuire, limbaj agresiv, comportament discriminatoriu sau lipsă de respect față de ceilalți participanți este strict interzisă.",
-                r2Title: "Siguranță și confort:",
-                r2Text: "Participanții trebuie să respecte limitele celorlalți și să mențină o atmosferă caldă și deschisă.",
-                r3Text: "Organizatorii își rezervă dreptul de a refuza participarea sau de a îndepărta de la eveniment orice persoană al cărei comportament încalcă aceste reguli, fără drept de rambursare (dacă este cazul).",
-                s4Title: "4. Anulări și Politica de Participare",
-                s4Text: "Dacă te-ai înscris la un eveniment și nu mai poți ajunge, te rugăm să ne anunți în timp util pentru a elibera locul pentru o altă persoană. Ne rezervăm dreptul de a modifica detaliile evenimentelor (locație, oră) în caz de situații neprevăzute, notificând participanții din timp.",
-                s5Title: "5. Limitarea Răspunderii",
-                s5Text: "Participarea la evenimentele Offline se face pe propria răspundere. Organizatorii nu își asumă responsabilitatea pentru obiecte personale pierdute în cadrul locațiilor partenere și nici pentru interacțiunile ulterioare sau relațiile dezvoltate între participanți în afara cadrului organizat oficial.",
-                s6Title: "6. Protecția Datelor (Confidențialitate)",
-                s6Text: "Datele colectate la înscriere (cum ar fi numele sau adresa de e-mail) sunt folosite exclusiv pentru organizarea evenimentelor Offline și comunicarea cu tine. Nu le vom oferi niciodată unor terți.",
-                s7Title: "7. Contact",
-                s7Text: 'Pentru orice întrebări sau nelămuriri legate de termeni sau evenimente, ne poți contacta direct prin intermediul paginii noastre de <a href="https://www.instagram.com/getoffline404" target="_blank" class="insta-link">Instagram</a>.'
+                navAbout: "Cine suntem",
+                navWhy: "Why Offline?",
+                heroTitle: "Mai puțin scroll.<br>Mai mult <span class='spark'>spark.</span>",
+                heroSubtitle: "Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.",
+                ctaBtn: "Descoperă următoarea întâlnire",
+                sectionTitle: "Why Offline?",
+                r1Title: "Oboseala de aplicații (Swipe Fatigue)",
+                r1Text: "Din frustrarea generată de conversațiile sterile online, care rareori devin întâlniri reale.",
+                r2Title: "Lipsa spațiilor de conectare autentică",
+                r2Text: "În afara cluburilor aglomerate sau a barurilor gălăgioase, e greu să găsești un loc unde să poți purta o conversație reală cu un străin fără să fie ciudat sau stânjenitor.",
+                r3Title: "Nevoia de prezență",
+                r3Text: "Din dorința de a trăi momente pe care nu le postezi pentru validare, ci le simți — fără notificări, fără filtre și fără algoritmi.",
+                aboutTitle: "Cine suntem",
+                aboutText: "Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul unui telefon. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.",
+                terms: "Termeni și Condiții"
             },
             en: {
-                pageTitle: "Terms and Conditions | Offline",
-                backLink: "&larr; Back to home",
                 langBtn: "RO",
-                mainTitle: "Terms and Conditions",
-                updateDate: "Last updated: September 2026",
-                s1Title: "1. Introduction",
-                s1Text: "Welcome to <strong>Offline</strong>. Participation in our meetups and events implies acceptance of these Terms and Conditions. Please read them carefully before registering or attending our events in Bucharest.",
-                s2Title: "2. About the Events",
-                s2Text: "Offline organizes physical meetups dedicated to face-to-face human interaction, disconnecting from screens, and building authentic connections. Participation is based on prior registration, subject to available spots.",
-                s3Title: "3. Code of Conduct",
-                s3Intro: "To ensure a safe, pleasant, and respectful environment for all participants, we reserve the right to enforce the following rules:",
-                r1Title: "Mutual Respect:",
-                r1Text: "Any form of harassment, aggressive language, discriminatory behavior, or disrespect toward other participants is strictly prohibited.",
-                r2Title: "Safety and Comfort:",
-                r2Text: "Participants must respect each other's boundaries and maintain a warm and open atmosphere.",
-                r3Text: "The organizers reserve the right to refuse participation or remove from the event any person whose behavior violates these rules, without the right to a refund (if applicable).",
-                s4Title: "4. Cancellations and Participation Policy",
-                s4Text: "If you registered for an event and can no longer make it, please notify us in advance so we can release the spot for someone else. We reserve the right to modify event details (location, time) in unforeseen circumstances, notifying participants in a timely manner.",
-                s5Title: "5. Limitation of Liability",
-                s5Text: "Participation in Offline events is at your own risk. The organizers are not responsible for personal items lost at partner venues, nor for subsequent interactions or relationships developed between participants outside the officially organized framework.",
-                s6Title: "6. Data Protection (Privacy)",
-                s6Text: "Data collected upon registration (such as name or email address) is used exclusively for organizing Offline events and communicating with you. We will never share your data with third parties.",
-                s7Title: "7. Contact",
-                s7Text: 'For any questions or concerns regarding these terms or events, you can contact us directly via our <a href="https://www.instagram.com/getoffline404" target="_blank" class="insta-link">Instagram</a> page.'
+                navAbout: "Who we are",
+                navWhy: "Why Offline?",
+                heroTitle: "Less scroll.<br>More <span class='spark'>spark.</span>",
+                heroSubtitle: "Two hours away from screens. New people, honest conversations, and room for a connection that starts in real life.",
+                ctaBtn: "Discover the next meetup",
+                sectionTitle: "Why Offline?",
+                r1Title: "Swipe Fatigue",
+                r1Text: "Born from the frustration of sterile online chats that rarely turn into real-life meetups.",
+                r2Title: "Lack of Authentic Spaces",
+                r2Text: "Outside of crowded clubs or loud bars, it's hard to find a place where you can have a real conversation with a stranger without it feeling awkward.",
+                r3Title: "The Need for Presence",
+                r3Text: "Driven by the desire to live moments you feel rather than post for validation — no notifications, no filters, and no algorithms.",
+                aboutTitle: "Who we are",
+                aboutText: "Andreea and Ana! We refused to accept that modern socialization has to come down to a phone screen. We are the team creating a warm, safe, and welcoming sanctuary for anyone looking for real people, sincere discussions, and an unmasked atmosphere.",
+                terms: "Terms and Conditions"
             }
         };
 
         function switchLanguage() {
             currentLang = currentLang === 'ro' ? 'en' : 'ro';
-            const t = termsTexts[currentLang];
+            const t = texts[currentLang];
 
-            document.getElementById('pageTitle').innerHTML = t.pageTitle;
-            document.getElementById('backLink').innerHTML = t.backLink;
             document.getElementById('langToggle').innerHTML = t.langBtn;
-            document.getElementById('mainTitle').innerHTML = t.mainTitle;
-            document.getElementById('updateDate').innerHTML = t.updateDate;
-            document.getElementById('s1Title').innerHTML = t.s1Title;
-            document.getElementById('s1Text').innerHTML = t.s1Text;
-            document.getElementById('s2Title').innerHTML = t.s2Title;
-            document.getElementById('s2Text').innerHTML = t.s2Text;
-            document.getElementById('s3Title').innerHTML = t.s3Title;
-            document.getElementById('s3Intro').innerHTML = t.s3Intro;
-            document.getElementById('r1Title').innerHTML = t.r1Title;
-            document.getElementById('r1Text').innerHTML = t.r1Text;
-            document.getElementById('r2Title').innerHTML = t.r2Title;
-            document.getElementById('r2Text').innerHTML = t.r2Text;
-            document.getElementById('r3Text').innerHTML = t.r3Text;
-            document.getElementById('s4Title').innerHTML = t.s4Title;
-            document.getElementById('s4Text').innerHTML = t.s4Text;
-            document.getElementById('s5Title').innerHTML = t.s5Title;
-            document.getElementById('s5Text').innerHTML = t.s5Text;
-            document.getElementById('s6Title').innerHTML = t.s6Title;
-            document.getElementById('s6Text').innerHTML = t.s6Text;
-            document.getElementById('s7Title').innerHTML = t.s7Title;
-            document.getElementById('s7Text').innerHTML = t.s7Text;
+            document.getElementById('navAbout').innerHTML = t.navAbout;
+            document.getElementById('navWhy').innerHTML = t.navWhy;
+            document.getElementById('heroTitle').innerHTML = t.heroTitle;
+            document.getElementById('heroSubtitle').innerHTML = t.heroSubtitle;
+            document.getElementById('ctaButton').innerHTML = t.ctaBtn;
+            document.getElementById('sectionTitle').innerHTML = t.sectionTitle;
+            document.getElementById('reason1Title').innerHTML = t.r1Title;
+            document.getElementById('reason1Text').innerHTML = t.r1Text;
+            document.getElementById('reason2Title').innerHTML = t.r2Title;
+            document.getElementById('reason2Text').innerHTML = t.r2Text;
+            document.getElementById('reason3Title').innerHTML = t.r3Title;
+            document.getElementById('reason3Text').innerHTML = t.r3Text;
+            document.getElementById('aboutTitle').innerHTML = t.aboutTitle;
+            document.getElementById('aboutText').innerHTML = t.aboutText;
+            document.getElementById('termsText').innerHTML = t.terms;
 
-            document.getElementById('terms-root').setAttribute('lang', currentLang);
+            document.getElementById('html-root').setAttribute('lang', currentLang);
         }
     </script>
+
 </body>
 </html>
