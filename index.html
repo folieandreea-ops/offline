@@ -15,16 +15,7 @@
             margin: 0;
             position: relative;
         }
-        /* Logo-ul oficial în stânga sus */
-        .brand-logo {
-            position: fixed;
-            top: 25px;
-            left: 30px;
-            max-width: 140px;
-            height: auto;
-            z-index: 100;
-        }
-        /* Meniul/Link-ul din dreapta sus */
+        /* Meniul/Link-ul din dreapta sus (Instagram și Why Offline) */
         .nav-right {
             position: fixed;
             top: 30px;
@@ -81,13 +72,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Secțiunea de jos: Why Offline? (Layout pe două coloane) */
+        /* Secțiunea Why Offline? (Stânga text, Dreapta poză) */
         .details-section {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            padding: 100px 50px;
+            padding: 80px 50px 40px 50px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -97,6 +89,7 @@
             gap: 60px;
             align-items: center;
             width: 100%;
+            margin-bottom: 60px;
         }
         .details-content h2 {
             font-size: 2.2rem;
@@ -120,7 +113,7 @@
             line-height: 1.6;
             margin: 0;
         }
-        /* Stilul pentru poza din dreapta */
+        /* Poza din dreapta */
         .details-image-container img {
             width: 100%;
             height: auto;
@@ -129,14 +122,20 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+        /* Logo-ul la subsol (Footer) */
+        .footer-logo {
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .footer-logo img {
+            max-width: 160px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
-
-    <!-- Logo-ul oficial în stânga sus -->
-    <a href="#">
-        <img src="WhatsApp Image 2026-09-15 at 09.19.50.jpeg" alt="OFFLINE" class="brand-logo">
-    </a>
 
     <!-- Meniul din dreapta sus -->
     <div class="nav-right">
@@ -177,10 +176,14 @@
 
             <!-- Dreapta: Imaginea -->
             <div class="details-image-container">
-                <!-- Înlocuiește 'nume-poza.jpg' cu numele exact al imaginii pe care o urci pe GitHub pentru această secțiune -->
                 <img src="nume-poza.jpg" alt="Offline Vibe">
             </div>
 
+        </div>
+
+        <!-- Logo-ul oficial mutat la subsolul paginii -->
+        <div class="footer-logo">
+            <img src="WhatsApp Image 2026-09-15 at 09.19.50.jpeg" alt="OFFLINE">
         </div>
     </div>
 
