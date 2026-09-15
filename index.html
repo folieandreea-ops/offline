@@ -99,8 +99,28 @@
             color: #a0a0a0;
             max-width: 600px;
             line-height: 1.6;
-            margin: 0;
+            margin: 0 0 30px 0;
         }
+
+        /* Stilul butonului de Call to Action în culorile "spark" */
+        .cta-btn {
+            background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 100%);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(255, 42, 133, 0.3);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .cta-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(255, 42, 133, 0.4);
+        }
+
         /* Secțiunea Why Offline? */
         .details-section {
             min-height: 100vh;
@@ -172,6 +192,10 @@
                 font-size: 1rem;
                 padding: 0 10px;
             }
+            .cta-btn {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
             .details-section {
                 padding: 100px 20px 30px 20px;
             }
@@ -218,6 +242,8 @@
         <p class="hero-subtitle" id="heroSubtitle">
             Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.
         </p>
+        <!-- Butonul nou în culorile spark -->
+        <a href="https://www.instagram.com/getoffline404" target="_blank" class="cta-btn" id="ctaButton">Descoperă următoarea întâlnire</a>
     </div>
 
     <!-- Secțiunea Why Offline? -->
@@ -267,6 +293,7 @@
                 navWhy: "Why Offline?",
                 heroTitle: "Mai puțin scroll.<br>Mai mult <span class='spark'>spark.</span>",
                 heroSubtitle: "Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.",
+                ctaBtn: "Descoperă următoarea întâlnire",
                 sectionTitle: "Why Offline?",
                 r1Title: "Oboseala de aplicații (Swipe Fatigue)",
                 r1Text: "Din frustrarea generată de conversațiile sterile online, care rareori devin întâlniri reale.",
@@ -280,6 +307,7 @@
                 navWhy: "Why Offline?",
                 heroTitle: "Less scroll.<br>More <span class='spark'>spark.</span>",
                 heroSubtitle: "Two hours away from screens. New people, honest conversations, and room for a connection that starts in real life.",
+                ctaBtn: "Discover the next meetup",
                 sectionTitle: "Why Offline?",
                 r1Title: "Swipe Fatigue",
                 r1Text: "Born from the frustration of sterile online chats that rarely turn into real-life meetups.",
@@ -298,6 +326,7 @@
             document.getElementById('navWhy').innerHTML = t.navWhy;
             document.getElementById('heroTitle').innerHTML = t.heroTitle;
             document.getElementById('heroSubtitle').innerHTML = t.heroSubtitle;
+            document.getElementById('ctaButton').innerHTML = t.ctaBtn;
             document.getElementById('sectionTitle').innerHTML = t.sectionTitle;
             document.getElementById('reason1Title').innerHTML = t.r1Title;
             document.getElementById('reason1Text').innerHTML = t.r1Text;
