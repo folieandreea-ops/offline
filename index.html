@@ -229,8 +229,11 @@
             color: #a0a0a0;
             font-size: 1.15rem;
             line-height: 1.8;
-            margin: 0;
+            margin: 0 0 16px 0;
             text-align: left;
+        }
+        .text-content-inner p:last-child {
+            margin-bottom: 0;
         }
         
         /* Subsolul paginii centrat */
@@ -363,7 +366,9 @@
     <div id="misiunea" class="text-section">
         <div class="text-content-inner">
             <h2 id="missionTitle">Misiunea <span class="spark">Offline</span></h2>
-            <p id="missionText">Ne propunem să scoatem oamenii din ecrane și să îi aducem împreună în spații gândite special pentru interacțiuni autentice. Credem că magia se întâmplă atunci când lași telefonul în geantă, te uiți în ochii celuilalt și lași conversația să curgă natural, fără filtre și fără presiune.</p>
+            <p id="missionText1">Misiunea noastră este deconectarea pentru reconectare (Disconnect to reconnect).</p>
+            <p id="missionText2">Să creăm un spațiu în care oricine vine singur să se simtă integrat și binevenit încă din primele minute.</p>
+            <p id="missionText3">Să construim o comunitate, nu doar un eveniment: Să demonstrăm că oamenii din București încă își doresc prietenii noi, râsete sincere și chimie reală, iar tot ce le lipsea era contextul potrivit.</p>
         </div>
     </div>
 
@@ -434,7 +439,9 @@
                 aboutTitle: 'Cine <span class="spark">suntem</span>',
                 aboutText: "Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul telefonului. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.",
                 missionTitle: 'Misiunea <span class="spark">Offline</span>',
-                missionText: "Ne propunem să scoatem oamenii din ecrane și să îi aducem împreună în spații gândite special pentru interacțiuni autentice. Credem că magia se întâmplă atunci când lași telefonul în geantă, te uiți în ochii celuilalt și lași conversația să curgă natural, fără filtre și fără presiune.",
+                missionText1: "Misiunea noastră este deconectarea pentru reconectare (Disconnect to reconnect).",
+                missionText2: "Să creăm un spațiu în care oricine vine singur să se simtă integrat și binevenit încă din primele minute.",
+                missionText3: "Să construim o comunitate, nu doar un eveniment: Să demonstrăm că oamenii din București încă își doresc prietenii noi, râsete sincere și chimie reală, iar tot ce le lipsea era contextul potrivit.",
                 sectionTitle: 'Why <span class="spark">Offline?</span>',
                 r1Title: "Oboseala de aplicații (Swipe Fatigue)",
                 r1Text: "Din frustrarea generată de conversațiile sterile online, care rareori devin întâlniri reale.",
@@ -457,7 +464,9 @@
                 aboutTitle: 'Who <span class="spark">we are</span>',
                 aboutText: "Andreea and Ana! We refused to accept that modern socialization has to come down to a phone screen. We are the team creating a warm, safe, and welcoming sanctuary for anyone looking for real people, sincere discussions, and an unmasked atmosphere.",
                 missionTitle: 'Offline <span class="spark">Mission</span>',
-                missionText: "Our mission is to bring people out of their screens and together in spaces designed specifically for authentic interactions. We believe magic happens when you put your phone away, look each other in the eye, and let the conversation flow naturally, without filters or pressure.",
+                missionText1: "Our mission is disconnecting to reconnect.",
+                missionText2: "To create a space where anyone coming alone feels integrated and welcome from the very first minutes.",
+                missionText3: "To build a community, not just an event: To prove that people in Bucharest still want new friendships, sincere laughter, and real chemistry, and all they were missing was the right context.",
                 sectionTitle: 'Why <span class="spark">Offline?</span>',
                 r1Title: "Swipe Fatigue",
                 r1Text: "Born from the frustration of sterile online chats that rarely turn into real-life meetups.",
@@ -485,7 +494,9 @@
             document.getElementById('aboutTitle').innerHTML = t.aboutTitle;
             document.getElementById('aboutText').innerHTML = t.aboutText;
             document.getElementById('missionTitle').innerHTML = t.missionTitle;
-            document.getElementById('missionText').innerHTML = t.missionText;
+            document.getElementById('missionText1').innerHTML = t.missionText1;
+            document.getElementById('missionText2').innerHTML = t.missionText2;
+            document.getElementById('missionText3').innerHTML = t.missionText3;
             document.getElementById('sectionTitle').innerHTML = t.sectionTitle;
             document.getElementById('reason1Title').innerHTML = t.r1Title;
             document.getElementById('reason1Text').innerHTML = t.r1Text;
