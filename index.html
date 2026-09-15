@@ -17,7 +17,7 @@
             text-align: center;
             position: relative;
         }
-        /* Logo-ul în stânga sus */
+        /* Logo-ul oficial în stânga sus */
         .brand-logo {
             position: absolute;
             top: 25px;
@@ -45,13 +45,21 @@
             border-color: #ffffff;
         }
         .container {
-            max-width: 600px;
+            max-width: 700px;
             padding: 20px;
         }
-        p {
-            color: #a0a0a0;
-            font-size: 1.1rem;
-            margin-top: 20px;
+        /* Stilul pentru mesajul principal */
+        .hero-text {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            margin: 0;
+        }
+        /* Evidențierea cuvântului "spark" (dacă vrei să iasă în evidență) */
+        .spark {
+            color: #ffffff; /* Poți schimba dacă logo-ul are un accent anume */
         }
     </style>
 </head>
@@ -68,8 +76,10 @@
     </a>
 
     <div class="container">
-        <!-- Mesajul principal din mijlocul paginii -->
-        <p>Lăsăm aplicațiile deoparte. Conectare reală, față în față, în București.</p>
+        <!-- Mesajul principal -->
+        <h1 class="hero-text">
+            Mai puțin scroll.<br>Mai mult <span class="spark">spark</span>.
+        </h1>
     </div>
 
 </body>
