@@ -211,8 +211,9 @@
             object-position: center 40%;
         }
 
-        /* Container specific pentru video */
+        /* Container specific pentru video cu buton de play stilizat */
         .video-container {
+            position: relative;
             width: 100%;
             max-width: 800px;
             margin: 40px auto 0 auto;
@@ -221,6 +222,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
             background-color: #000000;
+            cursor: pointer;
         }
         .video-container video {
             width: 100%;
@@ -228,6 +230,37 @@
             display: block;
             max-height: 500px;
             object-fit: cover;
+        }
+        .custom-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(255, 42, 133, 0.5);
+            transition: all 0.3s ease;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .custom-play-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: #ffffff;
+            margin-left: 3px; /* Optic centrare triunghi */
+        }
+        .video-container:hover .custom-play-btn {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 15px 30px rgba(255, 42, 133, 0.7);
+        }
+        .video-container.playing .custom-play-btn {
+            opacity: 0;
+            pointer-events: none;
         }
 
         /* Stil comun pentru secțiunile text simple */
@@ -316,6 +349,14 @@
             .video-container {
                 max-width: 100%;
                 margin-top: 30px;
+            }
+            .custom-play-btn {
+                width: 55px;
+                height: 55px;
+            }
+            .custom-play-btn svg {
+                width: 22px;
+                height: 22px;
             }
             .text-section {
                 padding: 40px 20px 40px 20px;
@@ -422,7 +463,7 @@
         </div>
     </div>
 
-    <!-- Secțiunea Misiunea Offline și video.mp4 imediat după -->
+    <!-- Secțiunea Misiunea Offline și video.mp4 cu buton de play -->
     <div id="misiunea" class="text-section">
         <div class="text-content-inner">
             <h2 id="missionTitle">Misiunea <span class="spark">Offline</span></h2>
@@ -431,12 +472,15 @@
             <p id="missionText3">Să construim o comunitate, nu doar un eveniment: Să demonstrăm că oamenii din București încă își doresc prietenii noi, râsete sincere și chimie reală, iar tot ce le lipsea era contextul potrivit.</p>
         </div>
 
-        <!-- Video inserat direct după textul misiunii -->
-        <div class="video-container">
-            <video autoplay muted loop playsinline>
+        <!-- Video cu buton de play custom -->
+        <div class="video-container" id="videoContainer" onclick="toggleVideoPlay()">
+            <video id="customVideo" playsinline preload="metadata">
                 <source src="video.mp4" type="video/mp4">
                 Browserul tău nu suportă elementul video.
             </video>
+            <div class="custom-play-btn" id="playBtn">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
         </div>
     </div>
 
@@ -446,7 +490,7 @@
         <a href="terms.html" class="terms-link" id="termsText">Termeni și Condiții</a>
     </div>
 
-    <!-- Script complet pentru comutarea instantă a limbilor (RO / EN) -->
+    <!-- Script complet pentru comutarea limbilor și redarea video -->
     <script>
         let currentLang = 'ro';
 
@@ -526,6 +570,21 @@
             document.getElementById('termsText').innerHTML = t.terms;
 
             document.getElementById('html-root').setAttribute('lang', currentLang);
+        }
+
+        function toggleVideoPlay() {
+            const video = document.getElementById('customVideo');
+            const container = document.getElementById('videoContainer');
+
+            if (video.paused) {
+                video.play();
+                container.classList.add('playing');
+                video.setAttribute('controls', 'controls');
+            } else {
+                video.pause();
+                container.classList.remove('playing');
+                video.removeAttribute('controls');
+            }
         }
     </script>
 
