@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="ro" id="terms-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termeni și Condiții | Offline</title>
+    <title id="pageTitle">Termeni și Condiții | Offline</title>
     <style>
         body {
             background-color: #000000;
@@ -12,17 +12,60 @@
             margin: 0;
             padding: 40px 20px;
             line-height: 1.6;
+            position: relative;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
+            padding-top: 20px;
+        }
+        /* Meniul de sus (Butonul de limbă și Înapoi) */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+        .back-link {
+            color: #ffffff;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .lang-btn {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
         }
         h1 {
             font-size: 2.2rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 50%, #441128 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        .update-date {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
         }
         h2 {
             font-size: 1.3rem;
@@ -38,56 +81,142 @@
         ul {
             padding-left: 20px;
         }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 30px;
-            color: #ffffff;
+        a.insta-link {
+            color: #ff75bc;
             text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
         }
-        .back-link:hover {
-            background-color: #ffffff;
-            color: #000000;
+        a.insta-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <a href="index.html" class="back-link">&larr; Înapoi la pagină</a>
-        
-        <h1>Termeni și Condiții</h1>
-        <p><em>Ultima actualizare: Septembrie 2026</em></p>
-
-        <h2>1. Introducere</h2>
-        <p>Bun venit la <strong>Offline</strong>. Participarea la întâlnirile și evenimentele organizate de noi implică acceptarea acestor Termeni și Condiții. Te rugăm să îi citești cu atenție înainte de a te înscrie sau de a participa la evenimentele noastre din București.</p>
-
-        <h2>2. Despre Evenimente</h2>
-        <p>Offline organizează întâlniri fizice dedicate interacțiunii umane directe, deconectării de la ecrane și construirii de conexiuni autentice. Participarea se face pe bază de înscriere prealabilă, în limita locurilor disponibile.</p>
-
-        <h2>3. Codul de Conduită</h2>
-        <p>Pentru a asigura un mediu sigur, plăcut și respectuos pentru toți participanții, ne rezervăm dreptul de a impune următoarele reguli:</p>
-        <ul>
-            <li><strong>Respect reciproc:</strong> Orice formă de hărțuire, limbaj agresiv, comportament discriminatoriu sau lipsă de respect față de ceilalți participanți este strict interzisă.</li>
-            <li><strong>Siguranță și confort:</strong> Participanții trebuie să respecte limitele celorlalți și să mențină o atmosferă caldă și deschisă.</li>
-            <li>Organizatorii își rezervă dreptul de a refuza participarea sau de a îndepărta de la eveniment orice persoană al cărei comportament încalcă aceste reguli, fără drept de rambursare (dacă este cazul).</li>
-        </ul>
-
-        <h2>4. Anulări și Politica de Participare</h2>
-        <p>Dacă te-ai înscris la un eveniment și nu mai poți ajunge, te rugăm să ne anunți în timp util pentru a elibera locul pentru o altă persoană. Ne rezervăm dreptul de a modifica detaliile evenimentelor (locație, oră) în caz de situații neprevăzute, notificând participanții din timp.</p>
-
-        <h2>5. Limitarea Răspunderii</h2>
-        <p>Participarea la evenimentele Offline se face pe propria răspundere. Organizatorii nu își asumă responsabilitatea pentru obiecte personale pierdute în cadrul locațiilor partenere și nici pentru interacțiunile ulterioare sau relațiile dezvoltate între participanți în afara cadrului organizat oficial.</p>
-
-        <h2>6. Protecția Datelor (Confidențialitate)</h2>
-        <p>Datele colectate la înscriere (cum ar fi numele sau adresa de e-mail) sunt folosite exclusiv pentru organizarea evenimentelor Offline și comunicarea cu tine. Nu le vom oferi niciodată unor terți.</p>
-
-        <h2>7. Contact</h2>
-        <p>Pentru orice întrebări sau nelămuriri legate de termeni sau evenimente, ne poți contacta direct prin intermediul paginii noastre de <a href="https://www.instagram.com/getoffline404" target="_blank" style="color: #ff75bc; text-decoration: none;">Instagram</a>.</p>
+    <div class="top-nav">
+        <a href="index.html" class="back-link" id="backLink">&larr; Înapoi la pagină</a>
+        <button class="lang-btn" id="langToggle" onclick="switchLanguage()">EN</button>
     </div>
 
+    <div class="container">
+        <h1 id="mainTitle">Termeni și Condiții</h1>
+        <div class="update-date" id="updateDate">Ultima actualizare: Septembrie 2026</div>
+
+        <h2 id="s1Title">1. Introducere</h2>
+        <p id="s1Text">Bun venit la <strong>Offline</strong>. Participarea la întâlnirile și evenimentele organizate de noi implică acceptarea acestor Termeni și Condiții. Te rugăm să îi citești cu atenție înainte de a te înscrie sau de a participa la evenimentele noastre din București.</p>
+
+        <h2 id="s2Title">2. Despre Evenimente</h2>
+        <p id="s2Text">Offline organizează întâlniri fizice dedicate interacțiunii umane directe, deconectării de la ecrane și construirii de conexiuni autentice. Participarea se face pe bază de înscriere prealabilă, în limita locurilor disponibile.</p>
+
+        <h2 id="s3Title">3. Codul de Conduită</h2>
+        <p id="s3Intro">Pentru a asigura un mediu sigur, plăcut și respectuos pentru toți participanții, ne rezervăm dreptul de a impune următoarele reguli:</p>
+        <ul>
+            <li><strong id="r1Title">Respect reciproc:</strong> <span id="r1Text">Orice formă de hărțuire, limbaj agresiv, comportament discriminatoriu sau lipsă de respect față de ceilalți participanți este strict interzisă.</span></li>
+            <li><strong id="r2Title">Siguranță și confort:</strong> <span id="r2Text">Participanții trebuie să respecte limitele celorlalți și să mențină o atmosferă caldă și deschisă.</span></li>
+            <li><span id="r3Text">Organizatorii își rezervă dreptul de a refuza participarea sau de a îndepărta de la eveniment orice persoană al cărei comportament încalcă aceste reguli, fără drept de rambursare (dacă este cazul).</span></li>
+        </ul>
+
+        <h2 id="s4Title">4. Anulări și Politica de Participare</h2>
+        <p id="s4Text">Dacă te-ai înscris la un eveniment și nu mai poți ajunge, te rugăm să ne anunți în timp util pentru a elibera locul pentru o altă persoană. Ne rezervăm dreptul de a modifica detaliile evenimentelor (locație, oră) în caz de situații neprevăzute, notificând participanții din timp.</p>
+
+        <h2 id="s5Title">5. Limitarea Răspunderii</h2>
+        <p id="s5Text">Participarea la evenimentele Offline se face pe propria răspundere. Organizatorii nu își asumă responsabilitatea pentru obiecte personale pierdute în cadrul locațiilor partenere și nici pentru interacțiunile ulterioare sau relațiile dezvoltate între participanți în afara cadrului organizat oficial.</p>
+
+        <h2 id="s6Title">6. Protecția Datelor (Confidențialitate)</h2>
+        <p id="s6Text">Datele colectate la înscriere (cum ar fi numele sau adresa de e-mail) sunt folosite exclusiv pentru organizarea evenimentelor Offline și comunicarea cu tine. Nu le vom oferi niciodată unor terți.</p>
+
+        <h2 id="s7Title">7. Contact</h2>
+        <p id="s7Text">Pentru orice întrebări sau nelămuriri legate de termeni sau evenimente, ne poți contacta direct prin intermediul paginii noastre de <a href="https://www.instagram.com/getoffline404" target="_blank" class="insta-link">Instagram</a>.</p>
+    </div>
+
+    <script>
+        let currentLang = 'ro';
+
+        const termsTexts = {
+            ro: {
+                pageTitle: "Termeni și Condiții | Offline",
+                backLink: "&larr; Înapoi la pagină",
+                langBtn: "EN",
+                mainTitle: "Termeni și Condiții",
+                updateDate: "Ultima actualizare: Septembrie 2026",
+                s1Title: "1. Introducere",
+                s1Text: "Bun venit la <strong>Offline</strong>. Participarea la întâlnirile și evenimentele organizate de noi implică acceptarea acestor Termeni și Condiții. Te rugăm să îi citești cu atenție înainte de a te înscrie sau de a participa la evenimentele noastre din București.",
+                s2Title: "2. Despre Evenimente",
+                s2Text: "Offline organizează întâlniri fizice dedicate interacțiunii umane directe, deconectării de la ecrane și construirii de conexiuni autentice. Participarea se face pe bază de înscriere prealabilă, în limita locurilor disponibile.",
+                s3Title: "3. Codul de Conduită",
+                s3Intro: "Pentru a asigura un mediu sigur, plăcut și respectuos pentru toți participanții, ne rezervăm dreptul de a impune următoarele reguli:",
+                r1Title: "Respect reciproc:",
+                r1Text: "Orice formă de hărțuire, limbaj agresiv, comportament discriminatoriu sau lipsă de respect față de ceilalți participanți este strict interzisă.",
+                r2Title: "Siguranță și confort:",
+                r2Text: "Participanții trebuie să respecte limitele celorlalți și să mențină o atmosferă caldă și deschisă.",
+                r3Text: "Organizatorii își rezervă dreptul de a refuza participarea sau de a îndepărta de la eveniment orice persoană al cărei comportament încalcă aceste reguli, fără drept de rambursare (dacă este cazul).",
+                s4Title: "4. Anulări și Politica de Participare",
+                s4Text: "Dacă te-ai înscris la un eveniment și nu mai poți ajunge, te rugăm să ne anunți în timp util pentru a elibera locul pentru o altă persoană. Ne rezervăm dreptul de a modifica detaliile evenimentelor (locație, oră) în caz de situații neprevăzute, notificând participanții din timp.",
+                s5Title: "5. Limitarea Răspunderii",
+                s5Text: "Participarea la evenimentele Offline se face pe propria răspundere. Organizatorii nu își asumă responsabilitatea pentru obiecte personale pierdute în cadrul locațiilor partenere și nici pentru interacțiunile ulterioare sau relațiile dezvoltate între participanți în afara cadrului organizat oficial.",
+                s6Title: "6. Protecția Datelor (Confidențialitate)",
+                s6Text: "Datele colectate la înscriere (cum ar fi numele sau adresa de e-mail) sunt folosite exclusiv pentru organizarea evenimentelor Offline și comunicarea cu tine. Nu le vom oferi niciodată unor terți.",
+                s7Title: "7. Contact",
+                s7Text: 'Pentru orice întrebări sau nelămuriri legate de termeni sau evenimente, ne poți contacta direct prin intermediul paginii noastre de <a href="https://www.instagram.com/getoffline404" target="_blank" class="insta-link">Instagram</a>.'
+            },
+            en: {
+                pageTitle: "Terms and Conditions | Offline",
+                backLink: "&larr; Back to home",
+                langBtn: "RO",
+                mainTitle: "Terms and Conditions",
+                updateDate: "Last updated: September 2026",
+                s1Title: "1. Introduction",
+                s1Text: "Welcome to <strong>Offline</strong>. Participation in our meetups and events implies acceptance of these Terms and Conditions. Please read them carefully before registering or attending our events in Bucharest.",
+                s2Title: "2. About the Events",
+                s2Text: "Offline organizes physical meetups dedicated to face-to-face human interaction, disconnecting from screens, and building authentic connections. Participation is based on prior registration, subject to available spots.",
+                s3Title: "3. Code of Conduct",
+                s3Intro: "To ensure a safe, pleasant, and respectful environment for all participants, we reserve the right to enforce the following rules:",
+                r1Title: "Mutual Respect:",
+                r1Text: "Any form of harassment, aggressive language, discriminatory behavior, or disrespect toward other participants is strictly prohibited.",
+                r2Title: "Safety and Comfort:",
+                r2Text: "Participants must respect each other's boundaries and maintain a warm and open atmosphere.",
+                r3Text: "The organizers reserve the right to refuse participation or remove from the event any person whose behavior violates these rules, without the right to a refund (if applicable).",
+                s4Title: "4. Cancellations and Participation Policy",
+                s4Text: "If you registered for an event and can no longer make it, please notify us in advance so we can release the spot for someone else. We reserve the right to modify event details (location, time) in unforeseen circumstances, notifying participants in a timely manner.",
+                s5Title: "5. Limitation of Liability",
+                s5Text: "Participation in Offline events is at your own risk. The organizers are not responsible for personal items lost at partner venues, nor for subsequent interactions or relationships developed between participants outside the officially organized framework.",
+                s6Title: "6. Data Protection (Privacy)",
+                s6Text: "Data collected upon registration (such as name or email address) is used exclusively for organizing Offline events and communicating with you. We will never share your data with third parties.",
+                s7Title: "7. Contact",
+                s7Text: 'For any questions or concerns regarding these terms or events, you can contact us directly via our <a href="https://www.instagram.com/getoffline404" target="_blank" class="insta-link">Instagram</a> page.'
+            }
+        };
+
+        function switchLanguage() {
+            currentLang = currentLang === 'ro' ? 'en' : 'ro';
+            const t = termsTexts[currentLang];
+
+            document.getElementById('pageTitle').innerHTML = t.pageTitle;
+            document.getElementById('backLink').innerHTML = t.backLink;
+            document.getElementById('langToggle').innerHTML = t.langBtn;
+            document.getElementById('mainTitle').innerHTML = t.mainTitle;
+            document.getElementById('updateDate').innerHTML = t.updateDate;
+            document.getElementById('s1Title').innerHTML = t.s1Title;
+            document.getElementById('s1Text').innerHTML = t.s1Text;
+            document.getElementById('s2Title').innerHTML = t.s2Title;
+            document.getElementById('s2Text').innerHTML = t.s2Text;
+            document.getElementById('s3Title').innerHTML = t.s3Title;
+            document.getElementById('s3Intro').innerHTML = t.s3Intro;
+            document.getElementById('r1Title').innerHTML = t.r1Title;
+            document.getElementById('r1Text').innerHTML = t.r1Text;
+            document.getElementById('r2Title').innerHTML = t.r2Title;
+            document.getElementById('r2Text').innerHTML = t.r2Text;
+            document.getElementById('r3Text').innerHTML = t.r3Text;
+            document.getElementById('s4Title').innerHTML = t.s4Title;
+            document.getElementById('s4Text').innerHTML = t.s4Text;
+            document.getElementById('s5Title').innerHTML = t.s5Title;
+            document.getElementById('s5Text').innerHTML = t.s5Text;
+            document.getElementById('s6Title').innerHTML = t.s6Title;
+            document.getElementById('s6Text').innerHTML = t.s6Text;
+            document.getElementById('s7Title').innerHTML = t.s7Title;
+            document.getElementById('s7Text').innerHTML = t.s7Text;
+
+            document.getElementById('terms-root').setAttribute('lang', currentLang);
+        }
+    </script>
 </body>
 </html>
