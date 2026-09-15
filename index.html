@@ -145,12 +145,11 @@
 
         /* Secțiunea Why Offline? */
         .details-section {
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 120px 40px 40px 40px;
+            padding: 120px 40px 60px 40px;
             max-width: 1200px;
             margin: 0 auto;
             box-sizing: border-box;
@@ -161,7 +160,6 @@
             gap: 60px;
             align-items: center;
             width: 100%;
-            margin-bottom: 60px;
         }
         .details-content h2 {
             font-size: 2.2rem;
@@ -193,6 +191,36 @@
             object-fit: cover;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Secțiunea Cine suntem (fără poză, design centrat și elegant) */
+        .about-section {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 80px auto;
+            padding: 0 40px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .about-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 50px 40px;
+            backdrop-filter: blur(10px);
+        }
+        .about-card h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 50%, #441128 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .about-card p {
+            color: #a0a0a0;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin: 0;
         }
         
         /* Subsolul paginii centrat */
@@ -234,7 +262,7 @@
                 font-size: 0.95rem;
             }
             .details-section {
-                padding: 100px 20px 30px 20px;
+                padding: 100px 20px 20px 20px;
             }
             .details-grid {
                 grid-template-columns: 1fr;
@@ -252,6 +280,18 @@
                 max-height: 250px;
                 width: 100%;
                 object-fit: cover;
+            }
+            .about-section {
+                padding: 0 20px;
+            }
+            .about-card {
+                padding: 30px 20px;
+            }
+            .about-card h2 {
+                font-size: 1.8rem;
+            }
+            .about-card p {
+                font-size: 1rem;
             }
             .nav-left {
                 top: 15px;
@@ -284,9 +324,10 @@
         </a>
     </div>
 
-    <!-- Meniul din dreapta sus (Limba și Why Offline?) -->
+    <!-- Meniul din dreapta sus (Limba, Cine suntem și Why Offline?) -->
     <div class="nav-right">
         <button class="lang-btn" id="langToggle" onclick="switchLanguage()">EN</button>
+        <a href="#cine-suntem" class="nav-link" id="navAbout">Cine suntem</a>
         <a href="#why-offline" class="nav-link" id="navWhy">Why Offline?</a>
     </div>
 
@@ -331,12 +372,20 @@
             </div>
 
         </div>
+    </div>
 
-        <!-- Logo-ul oficial și linkul de termeni centrate la subsol -->
-        <div class="footer-logo">
-            <img src="WhatsApp Image 2026-09-15 at 09.19.50.jpeg" alt="OFFLINE">
-            <a href="terms.html" class="terms-link" id="termsText">Termeni și Condiții</a>
+    <!-- Secțiunea Cine suntem (centrată, fără poză) -->
+    <div id="cine-suntem" class="about-section">
+        <div class="about-card">
+            <h2 id="aboutTitle">Cine suntem</h2>
+            <p id="aboutText">Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul unui telefon. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.</p>
         </div>
+    </div>
+
+    <!-- Logo-ul oficial și linkul de termeni centrate la subsol -->
+    <div class="footer-logo">
+        <img src="WhatsApp Image 2026-09-15 at 09.19.50.jpeg" alt="OFFLINE">
+        <a href="terms.html" class="terms-link" id="termsText">Termeni și Condiții</a>
     </div>
 
     <!-- Script simplu pentru comutarea instantă a limbilor (RO / EN) -->
@@ -346,6 +395,7 @@
         const texts = {
             ro: {
                 langBtn: "EN",
+                navAbout: "Cine suntem",
                 navWhy: "Why Offline?",
                 heroTitle: "Mai puțin scroll.<br>Mai mult <span class='spark'>spark.</span>",
                 heroSubtitle: "Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.",
@@ -357,10 +407,13 @@
                 r2Text: "În afara cluburilor aglomerate sau a barurilor gălăgioase, e greu să găsești un loc unde să poți purta o conversație reală cu un străin fără să fie ciudat sau stânjenitor.",
                 r3Title: "Nevoia de prezență",
                 r3Text: "Din dorința de a trăi momente pe care nu le postezi pentru validare, ci le simți — fără notificări, fără filtre și fără algoritmi.",
+                aboutTitle: "Cine suntem",
+                aboutText: "Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul unui telefon. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.",
                 terms: "Termeni și Condiții"
             },
             en: {
                 langBtn: "RO",
+                navAbout: "Who we are",
                 navWhy: "Why Offline?",
                 heroTitle: "Less scroll.<br>More <span class='spark'>spark.</span>",
                 heroSubtitle: "Two hours away from screens. New people, honest conversations, and room for a connection that starts in real life.",
@@ -372,6 +425,8 @@
                 r2Text: "Outside of crowded clubs or loud bars, it's hard to find a place where you can have a real conversation with a stranger without it feeling awkward.",
                 r3Title: "The Need for Presence",
                 r3Text: "Driven by the desire to live moments you feel rather than post for validation — no notifications, no filters, and no algorithms.",
+                aboutTitle: "Who we are",
+                aboutText: "Andreea and Ana! We refused to accept that modern socialization has to come down to a phone screen. We are the team creating a warm, safe, and welcoming sanctuary for anyone looking for real people, sincere discussions, and an unmasked atmosphere.",
                 terms: "Terms and Conditions"
             }
         };
@@ -381,6 +436,7 @@
             const t = texts[currentLang];
 
             document.getElementById('langToggle').innerHTML = t.langBtn;
+            document.getElementById('navAbout').innerHTML = t.navAbout;
             document.getElementById('navWhy').innerHTML = t.navWhy;
             document.getElementById('heroTitle').innerHTML = t.heroTitle;
             document.getElementById('heroSubtitle').innerHTML = t.heroSubtitle;
@@ -392,6 +448,8 @@
             document.getElementById('reason2Text').innerHTML = t.r2Text;
             document.getElementById('reason3Title').innerHTML = t.r3Title;
             document.getElementById('reason3Text').innerHTML = t.r3Text;
+            document.getElementById('aboutTitle').innerHTML = t.aboutTitle;
+            document.getElementById('aboutText').innerHTML = t.aboutText;
             document.getElementById('termsText').innerHTML = t.terms;
 
             document.getElementById('html-root').setAttribute('lang', currentLang);
