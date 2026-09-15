@@ -16,7 +16,7 @@
             position: relative;
             overflow-x: hidden;
         }
-        /* Meniul/Link-ul din dreapta sus */
+        /* Meniul/Link-urile din dreapta sus */
         .nav-right {
             position: fixed;
             top: 20px;
@@ -54,6 +54,37 @@
             color: #000000;
             border-color: #ffffff;
         }
+
+        /* Stilizare pentru widgetul de traducere Google */
+        #google_translate_element {
+            display: inline-block;
+        }
+        .goog-te-combo {
+            background-color: #000000;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            outline: none;
+            cursor: pointer;
+        }
+        /* Ascundem bara nativă enervantă care apare sus de la Google */
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+        body {
+            top: 0px !important;
+        }
+        /* Ascundem tooltip-urile și siglele care nu se potrivesc cu designul dark */
+        .goog-logo-link, .goog-te-gadget span {
+            display: none !important;
+        }
+        .goog-te-gadget {
+            color: transparent !important;
+            font-size: 0 !important;
+        }
+
         /* Prima secțiune (Hero) */
         .hero-section {
             height: 100vh;
@@ -169,26 +200,29 @@
                 margin-bottom: 25px;
             }
             .reason-box {
-                text-align: left; /* Lăsăm textul aliniat la stânga și pe mobil că e mai ușor de citit */
+                text-align: left;
             }
-            /* Controlăm exact cum arată poza pe mobil */
             .details-image-container img {
-                max-height: 250px; /* O facem mai compactă pe ecran mic */
+                max-height: 250px;
                 width: 100%;
                 object-fit: cover;
             }
             .nav-right {
                 top: 15px;
                 right: 15px;
-                padding: 4px 10px;
+                padding: 4px 8px;
+                gap: 8px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Meniul din dreapta sus -->
+    <!-- Meniul din dreapta sus (Include butonul de limbă, Why Offline? și Instagram) -->
     <div class="nav-right">
+        <!-- Selectorul de limbă Google Translate -->
+        <div id="google_translate_element"></div>
+
         <a href="#why-offline" class="nav-link">Why Offline?</a>
         <a href="https://www.instagram.com/getoffline404" target="_blank" class="instagram-btn">Instagram</a>
     </div>
@@ -239,6 +273,19 @@
             <img src="WhatsApp Image 2026-09-15 at 09.19.50.jpeg" alt="OFFLINE">
         </div>
     </div>
+
+    <!-- Scriptul oficial Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ro',
+                includedLanguages: 'en,ro',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
