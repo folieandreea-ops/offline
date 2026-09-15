@@ -335,7 +335,7 @@
         </a>
     </div>
 
-    <!-- Meniul din dreapta sus (Limba, Cine suntem, Misiunea Offline și Why Offline?) -->
+    <!-- Meniul din dreapta sus (Cine suntem, Misiunea și Why Offline?) -->
     <div class="nav-right">
         <button class="lang-btn" id="langToggle" onclick="switchLanguage()">EN</button>
         <a href="#cine-suntem" class="nav-link" id="navAbout">Cine suntem</a>
@@ -354,15 +354,20 @@
         <a href="https://www.instagram.com/getoffline404" target="_blank" class="cta-btn" id="ctaButton">Descoperă următoarea întâlnire</a>
     </div>
 
-    <!-- Secțiunea Cine suntem -->
+    <!-- Secțiunea Cine suntem (cu imaginea date.jpeg și mască sus) -->
     <div id="cine-suntem" class="text-section" style="padding-top: 100px;">
-        <div class="text-content-inner">
-            <h2 id="aboutTitle">Cine <span class="spark">suntem</span></h2>
-            <p id="aboutText">Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul telefonului. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.</p>
+        <div class="details-grid" style="align-items: center;">
+            <div class="text-content-inner">
+                <h2 id="aboutTitle">Cine <span class="spark">suntem</span></h2>
+                <p id="aboutText">Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul telefonului. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.</p>
+            </div>
+            <div class="details-image-container">
+                <img src="date.jpeg" alt="Andreea și Ana">
+            </div>
         </div>
     </div>
 
-    <!-- Secțiunea Nouă: Misiunea Offline -->
+    <!-- Secțiunea Misiunea Offline -->
     <div id="misiunea" class="text-section">
         <div class="text-content-inner">
             <h2 id="missionTitle">Misiunea <span class="spark">Offline</span></h2>
@@ -372,7 +377,7 @@
         </div>
     </div>
 
-    <!-- Secțiunea Why Offline? -->
+    <!-- Secțiunea Why Offline? (cu imaginea off.jpeg) -->
     <div id="why-offline" class="details-section">
         <div class="details-grid">
             
@@ -404,21 +409,8 @@
         </div>
     </div>
 
-    <!-- Secțiunea cu imaginea date.jpeg -->
-    <div class="text-section" style="padding-bottom: 120px;">
-        <div class="details-grid" style="align-items: center;">
-            <div class="text-content-inner">
-                <h2 id="experienceTitle">Conexiune <span class="spark">pe bune</span></h2>
-                <p id="experienceText">Fiecare eveniment este o oportunitate de a ieși din rutină, de a descoperi perspective noi și de a lega prietenii sau povești care merită trăite dincolo de mediul digital.</p>
-            </div>
-            <div class="details-image-container">
-                <img src="date.jpeg" alt="Offline Comunitate">
-            </div>
-        </div>
-    </div>
-
     <!-- Logo-ul oficial și linkul de termeni centrate la subsol -->
-    <div class="footer-logo">
+    <div class="footer-logo" style="margin-top: 60px;">
         <img src="WhatsApp Image 2026-09-15 at 09.19.50.jpeg" alt="OFFLINE">
         <a href="terms.html" class="terms-link" id="termsText">Termeni și Condiții</a>
     </div>
@@ -449,8 +441,6 @@
                 r2Text: "În afara cluburilor aglomerate sau a barurilor gălăgioase, e greu să găsești un loc unde să poți purta o conversație reală cu un străin fără să fie ciudat sau stânjenitor.",
                 r3Title: "Nevoia de prezență",
                 r3Text: "Din dorința de a trăi momente pe care nu le postezi pentru validare, ci le simți — fără notificări, fără filtre și fără algoritmi.",
-                experienceTitle: 'Conexiune <span class="spark">pe bune</span>',
-                experienceText: "Fiecare eveniment este o oportunitate de a ieși din rutină, de a descoperi perspective noi și de a lega prietenii sau povești care merită trăite dincolo de mediul digital.",
                 terms: "Termeni și Condiții"
             },
             en: {
@@ -474,8 +464,6 @@
                 r2Text: "Outside of crowded clubs or loud bars, it's hard to find a place where you can have a real conversation with a stranger without it feeling awkward.",
                 r3Title: "The Need for Presence",
                 r3Text: "Driven by the desire to live moments you feel rather than post for validation — no notifications, no filters, and no algorithms.",
-                experienceTitle: 'Real <span class="spark">Connection</span>',
-                experienceText: "Every event is an opportunity to break out of routine, discover new perspectives, and build friendships or stories worth living beyond the digital world.",
                 terms: "Terms and Conditions"
             }
         };
@@ -504,8 +492,6 @@
             document.getElementById('reason2Text').innerHTML = t.r2Text;
             document.getElementById('reason3Title').innerHTML = t.r3Title;
             document.getElementById('reason3Text').innerHTML = t.r3Text;
-            document.getElementById('experienceTitle').innerHTML = t.experienceTitle;
-            document.getElementById('experienceText').innerHTML = t.experienceText;
             document.getElementById('termsText').innerHTML = t.terms;
 
             document.getElementById('html-root').setAttribute('lang', currentLang);
