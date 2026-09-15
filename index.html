@@ -5,34 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offline | Conectare reală în București</title>
     <style>
+        html {
+            scroll-behavior: smooth; /* Asigură coborârea lină pe pagină */
+        }
         body {
             background-color: #000000;
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
             text-align: center;
             position: relative;
         }
         /* Logo-ul oficial în stânga sus */
         .brand-logo {
-            position: absolute;
+            position: fixed;
             top: 25px;
             left: 30px;
             max-width: 140px;
             height: auto;
+            z-index: 100;
         }
-        /* Butonul de Instagram în dreapta sus */
-        .instagram-btn {
-            position: absolute;
+        /* Meniul/Link-ul din dreapta sus (Why Offline + Instagram) */
+        .nav-right {
+            position: fixed;
             top: 30px;
             right: 30px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            z-index: 100;
+        }
+        .nav-link {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+        }
+        .instagram-btn {
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 10px 20px;
+            padding: 8px 18px;
             border-radius: 30px;
             text-decoration: none;
             font-size: 0.9rem;
@@ -44,11 +59,15 @@
             color: #000000;
             border-color: #ffffff;
         }
-        .container {
-            max-width: 700px;
+        /* Secțiunea Hero (centrată pe ecran) */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
         }
-        /* Stilul pentru mesajul principal */
         .hero-text {
             font-size: 2.5rem;
             font-weight: 700;
@@ -57,11 +76,43 @@
             letter-spacing: -0.5px;
             margin: 0;
         }
-        /* Efectul de gradient de la roz spre tonuri închise/negru pentru "spark" */
         .spark {
             background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 50%, #441128 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+        /* Secțiunea de jos: Why Offline? */
+        .details-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .details-section h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .reason-box {
+            margin-bottom: 30px;
+        }
+        .reason-box strong {
+            color: #ff75bc;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .reason-box p {
+            color: #a0a0a0;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
         }
     </style>
 </head>
@@ -72,16 +123,37 @@
         <img src="WhatsApp Image 2026-09-15 at 09.19.50.jpeg" alt="OFFLINE" class="brand-logo">
     </a>
 
-    <!-- Butonul de Instagram în dreapta sus -->
-    <a href="https://www.instagram.com/getoffline404" target="_blank" class="instagram-btn">
-        Instagram
-    </a>
+    <!-- Meniul din dreapta sus (Why Offline? + Buton Instagram) -->
+    <div class="nav-right">
+        <a href="#why-offline" class="nav-link">Why Offline?</a>
+        <a href="https://www.instagram.com/getoffline404" target="_blank" class="instagram-btn">Instagram</a>
+    </div>
 
-    <div class="container">
-        <!-- Mesajul principal -->
+    <!-- Prima secțiune (Hero) -->
+    <div class="hero-section">
         <h1 class="hero-text">
             Mai puțin scroll.<br>Mai mult <span class="spark">spark</span>.
         </h1>
+    </div>
+
+    <!-- Secțiunea extinsă: Why Offline? -->
+    <div id="why-offline" class="details-section">
+        <h2>Why Offline?</h2>
+        
+        <div class="reason-box">
+            <strong>Oboseala de aplicații (Swipe Fatigue)</strong>
+            <p>Din frustrarea generată de conversațiile sterile online, care rareori devin întâlniri reale.</p>
+        </div>
+
+        <div class="reason-box">
+            <strong>Lipsa spațiilor de conectare autentică</strong>
+            <p>În afara cluburilor aglomerate sau a barurilor gălăgioase, e greu să găsești un loc unde să poți purta o conversație reală cu un străin fără să fie ciudat sau stânjenitor.</p>
+        </div>
+
+        <div class="reason-box">
+            <strong>Nevoia de prezență</strong>
+            <p>Din dorința de a trăi momente pe care nu le postezi pentru validare, ci le simți — fără notificări, fără filtre și fără algoritmi.</p>
+        </div>
     </div>
 
 </body>
