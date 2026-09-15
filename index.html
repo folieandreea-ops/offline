@@ -16,6 +16,32 @@
             position: relative;
             overflow-x: hidden;
         }
+        /* Butonul de Instagram în stânga sus */
+        .nav-left {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+        .instagram-btn {
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 14px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .instagram-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
         /* Meniul/Link-urile din dreapta sus */
         .nav-right {
             position: fixed;
@@ -55,21 +81,7 @@
             color: #000000;
             border-color: #ffffff;
         }
-        .instagram-btn {
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 6px 14px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-        .instagram-btn:hover {
-            background-color: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
-        }
+
         /* Prima secțiune (Hero) */
         .hero-section {
             height: 100vh;
@@ -216,6 +228,14 @@
                 width: 100%;
                 object-fit: cover;
             }
+            .nav-left {
+                top: 15px;
+                left: 15px;
+            }
+            .instagram-btn {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
             .nav-right {
                 top: 15px;
                 right: 15px;
@@ -227,11 +247,15 @@
 </head>
 <body>
 
-    <!-- Meniul din dreapta sus -->
+    <!-- Butonul de Instagram în stânga sus -->
+    <div class="nav-left">
+        <a href="https://www.instagram.com/getoffline404" target="_blank" class="instagram-btn">Instagram</a>
+    </div>
+
+    <!-- Meniul din dreapta sus (Limba și Why Offline?) -->
     <div class="nav-right">
         <button class="lang-btn" id="langToggle" onclick="switchLanguage()">EN</button>
         <a href="#why-offline" class="nav-link" id="navWhy">Why Offline?</a>
-        <a href="https://www.instagram.com/getoffline404" target="_blank" class="instagram-btn">Instagram</a>
     </div>
 
     <!-- Prima secțiune (Hero) -->
@@ -242,7 +266,6 @@
         <p class="hero-subtitle" id="heroSubtitle">
             Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.
         </p>
-        <!-- Butonul nou în culorile spark -->
         <a href="https://www.instagram.com/getoffline404" target="_blank" class="cta-btn" id="ctaButton">Descoperă următoarea întâlnire</a>
     </div>
 
