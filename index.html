@@ -190,7 +190,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        /* Gradient negru puternic în partea de sus pentru a masca complet orice element sau logo superior */
+        /* Gradient negru puternic în partea de sus pentru imagini */
         .details-image-container::before {
             content: '';
             position: absolute;
@@ -209,6 +209,25 @@
             display: block;
             object-fit: cover;
             object-position: center 40%;
+        }
+
+        /* Container specific pentru video */
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: #000000;
+        }
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 500px;
+            object-fit: cover;
         }
 
         /* Stil comun pentru secțiunile text simple */
@@ -294,6 +313,10 @@
                 width: 100%;
                 object-fit: cover;
             }
+            .video-container {
+                max-width: 100%;
+                margin-top: 30px;
+            }
             .text-section {
                 padding: 40px 20px 40px 20px;
             }
@@ -367,7 +390,7 @@
         </div>
     </div>
 
-    <!-- Secțiunea Why Offline? (mutată înainte de Misiunea Offline) -->
+    <!-- Secțiunea Why Offline? -->
     <div id="why-offline" class="details-section">
         <div class="details-grid">
             
@@ -399,13 +422,21 @@
         </div>
     </div>
 
-    <!-- Secțiunea Misiunea Offline -->
+    <!-- Secțiunea Misiunea Offline și video.mp4 imediat după -->
     <div id="misiunea" class="text-section">
         <div class="text-content-inner">
             <h2 id="missionTitle">Misiunea <span class="spark">Offline</span></h2>
             <p id="missionText1">Misiunea noastră este deconectarea pentru reconectare (Disconnect to reconnect).</p>
             <p id="missionText2">Să creăm un spațiu în care oricine vine singur să se simtă integrat și binevenit încă din primele minute.</p>
             <p id="missionText3">Să construim o comunitate, nu doar un eveniment: Să demonstrăm că oamenii din București încă își doresc prietenii noi, râsete sincere și chimie reală, iar tot ce le lipsea era contextul potrivit.</p>
+        </div>
+
+        <!-- Video inserat direct după textul misiunii -->
+        <div class="video-container">
+            <video autoplay muted loop playsinline>
+                <source src="video.mp4" type="video/mp4">
+                Browserul tău nu suportă elementul video.
+            </video>
         </div>
     </div>
 
