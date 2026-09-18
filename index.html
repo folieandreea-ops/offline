@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offline | Conectare reală în București</title>
+    <title>Offline | Socializare și Conexiuni Reale în București</title>
     <style>
         html {
             scroll-behavior: smooth;
@@ -15,15 +15,19 @@
             margin: 0;
             position: relative;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        /* Meniul/Link-urile din dreapta sus - Spațiere orizontală mărită */
+        /* Navigare sus */
         .nav-right {
             position: fixed;
             top: 20px;
             right: 20px;
             display: flex;
-            gap: 24px;
+            gap: 20px;
             align-items: center;
             z-index: 100;
             background: rgba(0, 0, 0, 0.85);
@@ -38,10 +42,9 @@
             transition: color 0.3s ease;
             white-space: nowrap;
         }
-        .nav-link:hover {
+        .nav-link:hover, .nav-link.active {
             color: #ffffff;
         }
-        /* Butonul de schimbare a limbii stilizat curat */
         .lang-btn {
             background: transparent;
             color: #ffffff;
@@ -58,205 +61,102 @@
             border-color: #ffffff;
         }
 
-        /* Prima secțiune (Hero) */
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 120px 20px;
-            box-sizing: border-box;
-        }
-        .hero-text {
-            font-size: 2.8rem;
-            font-weight: 700;
-            line-height: 1.3;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-            margin: 0 0 20px 0;
-        }
         .spark {
             background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 50%, #441128 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .hero-subtitle {
-            font-size: 1.15rem;
-            color: #a0a0a0;
-            max-width: 600px;
-            line-height: 1.6;
-            margin: 0 0 30px 0;
-        }
 
-        /* Stilul butonului de Call to Action în culorile "spark" */
-        .cta-btn {
-            background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 100%);
-            color: #ffffff;
-            padding: 14px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            box-shadow: 0 10px 20px rgba(255, 42, 133, 0.3);
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        .cta-btn:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-            box-shadow: 0 15px 25px rgba(255, 42, 133, 0.4);
-        }
-
-        /* Secțiunile detaliate (Grilă comună) */
-        .details-section {
+        /* Conținut Principal Hero */
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 140px 20px 60px 20px;
+            text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 140px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            box-sizing: border-box;
         }
-        .details-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
-            align-items: center;
-            width: 100%;
-        }
-        .details-content h2 {
-            font-size: 2.2rem;
-            margin-bottom: 35px;
-            color: #ffffff;
-            text-align: left;
-        }
-        .reason-box {
-            margin-bottom: 25px;
-            text-align: left;
-        }
-        .reason-box strong {
-            color: #ff75bc;
-            font-size: 1.1rem;
-            display: block;
-            margin-bottom: 6px;
-        }
-        .reason-box p {
-            color: #a0a0a0;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin: 0;
-        }
-        .details-image-container {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .details-image-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 70px;
-            background: linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0) 100%);
-            z-index: 2;
-            pointer-events: none;
-        }
-        .details-image-container img {
-            width: 100%;
+        .hero-logo {
+            max-width: 180px;
             height: auto;
-            max-height: 450px;
-            display: block;
-            object-fit: cover;
-            object-position: center 40%;
+            margin-bottom: 30px;
         }
-
-        /* Container specific pentru video */
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 40px auto 0 auto;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background-color: #000000;
-            cursor: pointer;
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
-        .video-container video {
-            width: 100%;
-            height: auto;
-            display: block;
-            max-height: 500px;
-            object-fit: cover;
-        }
-        .custom-play-btn {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 100%);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 10px 25px rgba(255, 42, 133, 0.5);
-            transition: all 0.3s ease;
-            z-index: 10;
-            pointer-events: none;
-        }
-        .custom-play-btn svg {
-            width: 28px;
-            height: 28px;
-            fill: #ffffff;
-            margin-left: 3px;
-        }
-        .video-container:hover .custom-play-btn {
-            transform: translate(-50%, -50%) scale(1.1);
-            box-shadow: 0 15px 30px rgba(255, 42, 133, 0.7);
-        }
-        .video-container.playing .custom-play-btn {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        /* Stil comun pentru secțiunile text simple */
-        .text-section {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 140px 40px;
-            box-sizing: border-box;
-        }
-        .text-content-inner h2 {
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            color: #ffffff;
-            text-align: left;
-        }
-        .text-content-inner p {
+        .hero-desc {
             color: #a0a0a0;
             font-size: 1.15rem;
-            line-height: 1.8;
-            margin: 0 0 16px 0;
-            text-align: left;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-bottom: 40px;
         }
-        .text-content-inner p:last-child {
-            margin-bottom: 0;
+        .cta-btn {
+            background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 100%);
+            color: #ffffff;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 20px rgba(255, 42, 133, 0.3);
         }
-        
-        /* Subsolul paginii */
+        .cta-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Headliner / Previzualizare FAQ pe Index */
+        .home-faq-preview {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+        }
+        .home-faq-preview h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .home-faq-preview p {
+            color: #a0a0a0;
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .faq-redirect-btn {
+            display: inline-block;
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #ff75bc;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .faq-redirect-btn:hover {
+            background: #ff75bc;
+            color: #000000;
+            transform: translateY(-2px);
+        }
+
+        /* Subsol */
         .footer-section {
             text-align: center;
-            padding: 100px 20px 60px 20px;
+            padding: 40px 20px;
             width: 100%;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
@@ -264,10 +164,10 @@
             align-items: center;
             gap: 20px;
             box-sizing: border-box;
-            margin-top: 100px;
+            margin-top: 40px;
         }
         .footer-section img {
-            max-width: 150px;
+            max-width: 130px;
             height: auto;
         }
         .footer-socials {
@@ -278,8 +178,8 @@
         .social-icon-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -288,8 +188,8 @@
             transition: all 0.3s ease;
         }
         .social-icon-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: #ffffff;
             transition: fill 0.3s ease;
         }
@@ -310,57 +210,16 @@
             color: #ffffff;
         }
 
-        /* --- OPTIMIZARE PENTRU TELEFOANE --- */
+        /* Mobil */
         @media (max-width: 768px) {
-            .hero-section {
-                padding: 100px 20px;
+            h1 {
+                font-size: 2.2rem;
             }
-            .hero-text {
-                font-size: 2rem;
-            }
-            .hero-subtitle {
+            .hero-desc {
                 font-size: 1rem;
-                padding: 0 10px;
             }
-            .cta-btn {
-                padding: 12px 24px;
-                font-size: 0.95rem;
-            }
-            .details-section, .text-section {
-                padding: 90px 20px;
-            }
-            .details-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .details-content h2, .text-content-inner h2 {
-                text-align: center;
+            .home-faq-preview h2 {
                 font-size: 1.8rem;
-                margin-bottom: 25px;
-            }
-            .reason-box {
-                text-align: left;
-            }
-            .details-image-container img {
-                max-height: 250px;
-                width: 100%;
-                object-fit: cover;
-            }
-            .video-container {
-                max-width: 100%;
-                margin-top: 30px;
-            }
-            .custom-play-btn {
-                width: 55px;
-                height: 55px;
-            }
-            .custom-play-btn svg {
-                width: 22px;
-                height: 22px;
-            }
-            .text-content-inner p {
-                font-size: 1.05rem;
-                text-align: left;
             }
             .nav-right {
                 top: 15px;
@@ -381,117 +240,34 @@
     <!-- Meniul din dreapta sus -->
     <div class="nav-right">
         <button class="lang-btn" id="langToggle" onclick="switchLanguage()">EN</button>
-        <a href="#cine-suntem" class="nav-link" id="navAbout">Cine suntem</a>
-        <a href="#why-offline" class="nav-link" id="navWhy">Povestea Offline</a>
-        <a href="#misiunea" class="nav-link" id="navMission">Misiunea Offline</a>
+        <a href="index.html" class="nav-link active" id="navHome">Acasă</a>
         <a href="calendar.html" class="nav-link" id="navCalendar">Calendar</a>
+        <a href="faq.html" class="nav-link" id="navFaq">FAQ</a>
         <a href="galerie.html" class="nav-link" id="navGallery">Galerie Foto</a>
     </div>
 
-    <!-- Prima secțiune (Hero) -->
-    <div class="hero-section">
-        <h1 class="hero-text" id="heroTitle">
-            Mai puțin scroll.<br>Mai mult <span class="spark">spark.</span>
-        </h1>
-        <p class="hero-subtitle" id="heroSubtitle">
-            Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.
-        </p>
-        <a href="https://www.instagram.com/getoffline404" target="_blank" class="cta-btn" id="ctaButton">Descoperă următoarea întâlnire</a>
+    <!-- Conținut principal Hero -->
+    <div class="hero-container">
+        <img src="WhatsApp Image 2026-09-15 at 09.19.50.jpeg" alt="OFFLINE Logo" class="hero-logo">
+        <h1 id="heroTitle">Conexiuni reale, <span class="spark">fără ecrane.</span></h1>
+        <p id="heroDesc" class="hero-desc">Lăsăm telefoanele deoparte și ne redescoperim prin conversații autentice, jocuri și oameni faini în București.</p>
+        <a href="calendar.html" class="cta-btn" id="ctaButton">Vezi Calendarul</a>
     </div>
 
-    <!-- Secțiunea Cine suntem -->
-    <div id="cine-suntem" class="text-section">
-        <div class="details-grid" style="align-items: center;">
-            <div class="text-content-inner">
-                <h2 id="aboutTitle">Cine <span class="spark">suntem</span></h2>
-                <p id="aboutText">Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul telefonului. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.</p>
-            </div>
-            <div class="details-image-container">
-                <img src="date.jpeg" alt="Andreea și Ana">
-            </div>
-        </div>
+    <!-- Headliner-ul de FAQ care trimite spre pagina separată faq.html -->
+    <div class="home-faq-preview">
+        <h2 id="faqHeadTitle">Întrebări <span class="spark">Frecvente</span></h2>
+        <p id="faqHeadDesc">Ai nelămuriri despre cum se desfășoară un eveniment? Află tot ce trebuie să știi înainte de a veni.</p>
+        <a href="faq.html" class="faq-redirect-btn" id="faqHeadBtn">Vezi toate întrebările →</a>
     </div>
 
-    <!-- Secțiunea Povestea Offline -->
-    <div id="why-offline" class="details-section">
-        <div class="details-grid">
-            
-            <!-- Stânga: Textul explicativ -->
-            <div class="details-content">
-                <h2 id="sectionTitle">Povestea <span class="spark">Offline</span></h2>
-                
-                <div class="reason-box">
-                    <strong id="reason1Title">Oboseala de aplicații (Swipe Fatigue)</strong>
-                    <p id="reason1Text">Din frustrarea generată de conversațiile sterile online, care rareori devin întâlniri reale.</p>
-                </div>
-
-                <div class="reason-box">
-                    <strong id="reason2Title">Lipsa spațiilor de conectare autentică</strong>
-                    <p id="reason2Text">În afara cluburilor aglomerate sau a barurilor gălăgioase, e greu să găsești un loc unde să poți purta o conversație reală cu un străin fără să fie ciudat sau stânjenitor.</p>
-                </div>
-
-                <div class="reason-box">
-                    <strong id="reason3Title">Nevoia de prezență</strong>
-                    <p id="reason3Text">Din dorința de a trăi momente pe care nu le postezi pentru validare, ci le simți — fără notificări, fără filtre și fără algoritmi.</p>
-                </div>
-            </div>
-
-            <!-- Dreapta: Imaginea off.jpeg -->
-            <div class="details-image-container">
-                <img src="off.jpeg" alt="Offline Vibe">
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Secțiunea Misiunea Offline și video.mp4 -->
-    <div id="misiunea" class="text-section">
-        <div class="text-content-inner">
-            <h2 id="missionTitle">Misiunea <span class="spark">Offline</span></h2>
-            <p id="missionText1">Misiunea noastră este deconectarea pentru reconectare (Disconnect to reconnect).</p>
-            <p id="missionText2">Să creăm un spațiu în care oricine vine singur să se simtă integrat și binevenit încă din primele minute.</p>
-            <p id="missionText3">Să construim o comunitate, nu doar un eveniment: Să demonstrăm că oamenii din București încă își doresc prietenii noi, râsete sincere și chimie reală, iar tot ce le lipsea era contextul potrivit.</p>
-        </div>
-
-        <!-- Video cu buton de play custom -->
-        <div class="video-container" id="videoContainer" onclick="toggleVideoPlay()">
-            <video id="customVideo" playsinline preload="metadata">
-                <source src="video.mp4" type="video/mp4">
-                Browserul tău nu suportă elementul video.
-            </video>
-            <div class="custom-play-btn" id="playBtn">
-                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-        </div>
-    </div>
-
-    <!-- Secțiunea Calendar Evenimente Headliner -->
-    <div class="text-section" style="text-align: center;">
-        <div class="text-content-inner" style="max-width: 800px; margin: 0 auto;">
-            <h2 id="calendarHeadTitle" style="text-align: center;">Calendar <span class="spark">Evenimente</span></h2>
-            <p id="calendarHeadText" style="text-align: center; margin-bottom: 30px;">Vezi când este următoarea noastră întâlnire în București și rezervă-ți locul pentru următoarea experiență Offline.</p>
-            <a href="calendar.html" class="cta-btn" id="calendarHeadBtn">Vezi calendarul</a>
-        </div>
-    </div>
-
-    <!-- Secțiunea Galerie Foto Headliner -->
-    <div class="text-section" style="text-align: center;">
-        <div class="text-content-inner" style="max-width: 800px; margin: 0 auto;">
-            <h2 id="galleryHeadTitle" style="text-align: center;">Galerie <span class="spark">Foto</span></h2>
-            <p id="galleryHeadText" style="text-align: center; margin-bottom: 30px;">Zâmbete, conexiuni reale și momente surprinse la întâlnirile noastre. Aruncă o privire în universul Offline.</p>
-            <a href="galerie.html" class="cta-btn" id="galleryHeadBtn">Vezi galeria foto</a>
-        </div>
-    </div>
-
-    <!-- Subsolul paginii cu Logo, Social Media și Termeni -->
+    <!-- Subsol -->
     <div class="footer-section">
         <img src="WhatsApp Image 2026-09-15 at 09.19.50.jpeg" alt="OFFLINE">
         <div class="footer-socials">
-            <!-- Instagram -->
             <a href="https://www.instagram.com/getoffline404" target="_blank" class="social-icon-btn" title="Instagram">
                 <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-            <!-- Facebook -->
             <a href="https://www.facebook.com" target="_blank" class="social-icon-btn" title="Facebook">
                 <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.37 14.5 5 15.5 5H18V0h-3.808C10.5 0 9 1.5 9 4.615V8z"/></svg>
             </a>
@@ -499,72 +275,38 @@
         <a href="terms.html" class="terms-link" id="termsText">Termeni și Condiții</a>
     </div>
 
-    <!-- Script complet pentru comutarea limbilor și redarea video -->
+    <!-- Script pentru schimbarea limbii -->
     <script>
         let currentLang = 'ro';
 
         const texts = {
             ro: {
                 langBtn: "EN",
-                navAbout: "Cine suntem",
-                navWhy: "Povestea Offline",
-                navMission: "Misiunea Offline",
+                navHome: "Acasă",
                 navCalendar: "Calendar",
+                navFaq: "FAQ",
                 navGallery: "Galerie Foto",
-                heroTitle: "Mai puțin scroll.<br>Mai mult <span class='spark'>spark.</span>",
-                heroSubtitle: "Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.",
-                ctaBtn: "Descoperă următoarea întâlnire",
-                aboutTitle: 'Cine <span class="spark">suntem</span>',
-                aboutText: "Andreea și Ana! Noi am refuzat să mai acceptam că socializarea modernă trebuie să se rezume la ecranul telefonului. Suntem echipa care creează un refugiu cald, sigur și primitor pentru oricine caută oameni reali, discuții sincere și atmosferă fără mască.",
-                sectionTitle: 'Povestea <span class="spark">Offline</span>',
-                r1Title: "Oboseala de aplicații (Swipe Fatigue)",
-                r1Text: "Din frustrarea generată de conversațiile sterile online, care rareori devin întâlniri reale.",
-                r2Title: "Lipsa spațiilor de conectare autentică",
-                r2Text: "În afara cluburilor aglomerate sau a barurilor gălăgioase, e greu să găsești un loc unde să poți purta o conversație reală cu un străin fără să fie ciudat sau stânjenitor.",
-                r3Title: "Nevoia de prezență",
-                r3Text: "Din dorința de a trăi momente pe care nu le postezi pentru validare, ci le simți — fără notificări, fără filtre și fără algoritmi.",
-                missionTitle: 'Misiunea <span class="spark">Offline</span>',
-                missionText1: "Misiunea noastră este deconectarea pentru reconectare (Disconnect to reconnect).",
-                missionText2: "Să creăm un spațiu în care oricine vine singur să se simtă integrat și binevenit încă din primele minute.",
-                missionText3: "Să construim o comunitate, nu doar un eveniment: Să demonstrăm că oamenii din București încă își doresc prietenii noi, râsete sincere și chimie reală, iar tot ce le lipsea era contextul potrivit.",
-                calendarHeadTitle: 'Calendar <span class="spark">Evenimente</span>',
-                calendarHeadText: "Vezi când este următoarea noastră întâlnire în București și rezervă-ți locul pentru următoarea experiență Offline.",
-                calendarHeadBtn: "Vezi calendarul",
-                galleryHeadTitle: 'Galerie <span class="spark">Foto</span>',
-                galleryHeadText: "Zâmbete, conexiuni reale și momente surprinse la întâlnirile noastre. Aruncă o privire în universul Offline.",
-                galleryHeadBtn: "Vezi galeria foto",
+                heroTitle: 'Conexiuni reale, <span class="spark">fără ecrane.</span>',
+                heroDesc: "Lăsăm telefoanele deoparte și ne redescoperim prin conversații autentice, jocuri și oameni faini în București.",
+                ctaButton: "Vezi Calendarul",
+                faqHeadTitle: 'Întrebări <span class="spark">Frecvente</span>',
+                faqHeadDesc: "Ai nelămuriri despre cum se desfășoară un eveniment? Află tot ce trebuie să știi înainte de a veni.",
+                faqHeadBtn: "Vezi toate întrebările →",
                 terms: "Termeni și Condiții"
             },
             en: {
                 langBtn: "RO",
-                navAbout: "Who we are",
-                navWhy: "Offline Story",
-                navMission: "Offline Mission",
+                navHome: "Home",
                 navCalendar: "Calendar",
+                navFaq: "FAQ",
                 navGallery: "Photo Gallery",
-                heroTitle: "Less scroll.<br>More <span class='spark'>spark.</span>",
-                heroSubtitle: "Two hours away from screens. New people, honest conversations, and room for a connection that starts in real life.",
-                ctaBtn: "Discover the next meetup",
-                aboutTitle: 'Who <span class="spark">we are</span>',
-                aboutText: "Andreea and Ana! We refused to accept that modern socialization has to come down to a phone screen. We are the team creating a warm, safe, and welcoming sanctuary for anyone looking for real people, sincere discussions, and an unmasked atmosphere.",
-                sectionTitle: 'Offline <span class="spark">Story</span>',
-                r1Title: "Swipe Fatigue",
-                r1Text: "Born from the frustration of sterile online chats that rarely turn into real-life meetups.",
-                r2Title: "Lack of Authentic Spaces",
-                r2Text: "Outside of crowded clubs or loud bars, it's hard to find a place where you can have a real conversation with a stranger without it feeling awkward.",
-                r3Title: "The Need for Presence",
-                r3Text: "Driven by the desire to live moments you feel rather than post for validation — no notifications, no filters, and no algorithms.",
-                missionTitle: 'Offline <span class="spark">Mission</span>',
-                missionText1: "Our mission is disconnecting to reconnect.",
-                missionText2: "To create a space where anyone coming alone feels integrated and welcome from the very first minutes.",
-                missionText3: "To build a community, not just an event: To prove that people in Bucharest still want new friendships, sincere laughter, and real chemistry, and all they were missing was the right context.",
-                calendarHeadTitle: 'Event <span class="spark">Calendar</span>',
-                calendarHeadText: "Check when our next meetup in Bucharest is taking place and secure your spot for the next Offline experience.",
-                calendarHeadBtn: "View calendar",
-                galleryHeadTitle: 'Photo <span class="spark">Gallery</span>',
-                galleryHeadText: "Smiles, real connections, and moments captured at our meetups. Take a peek into the Offline universe.",
-                galleryHeadBtn: "View photo gallery",
-                terms: "Terms and Conditions"
+                heroTitle: 'Real connections, <span class="spark">no screens.</span>',
+                heroDesc: "We put our phones away and rediscover each other through authentic conversations, games, and great people in Bucharest.",
+                ctaButton: "View Calendar",
+                faqHeadTitle: 'Frequently <span class="spark">Asked Questions</span>',
+                faqHeadDesc: "Have questions about how a meetup works? Find everything you need to know before joining us.",
+                faqHeadBtn: "View all FAQs →",
+                terms: "Terms & Conditions"
             }
         };
 
@@ -573,53 +315,19 @@
             const t = texts[currentLang];
 
             document.getElementById('langToggle').innerHTML = t.langBtn;
-            document.getElementById('navAbout').innerHTML = t.navAbout;
-            document.getElementById('navWhy').innerHTML = t.navWhy;
-            document.getElementById('navMission').innerHTML = t.navMission;
+            document.getElementById('navHome').innerHTML = t.navHome;
             document.getElementById('navCalendar').innerHTML = t.navCalendar;
+            document.getElementById('navFaq').innerHTML = t.navFaq;
             document.getElementById('navGallery').innerHTML = t.navGallery;
             document.getElementById('heroTitle').innerHTML = t.heroTitle;
-            document.getElementById('heroSubtitle').innerHTML = t.heroSubtitle;
-            document.getElementById('ctaButton').innerHTML = t.ctaBtn;
-            document.getElementById('aboutTitle').innerHTML = t.aboutTitle;
-            document.getElementById('aboutText').innerHTML = t.aboutText;
-            document.getElementById('sectionTitle').innerHTML = t.sectionTitle;
-            document.getElementById('reason1Title').innerHTML = t.r1Title;
-            document.getElementById('reason1Text').innerHTML = t.r1Text;
-            document.getElementById('reason2Title').innerHTML = t.r2Title;
-            document.getElementById('reason2Text').innerHTML = t.r2Text;
-            document.getElementById('reason3Title').innerHTML = t.r3Title;
-            document.getElementById('reason3Text').innerHTML = t.r3Text;
-            document.getElementById('missionTitle').innerHTML = t.missionTitle;
-            document.getElementById('missionText1').innerHTML = t.missionText1;
-            document.getElementById('missionText2').innerHTML = t.missionText2;
-            document.getElementById('missionText3').innerHTML = t.missionText3;
-            document.getElementById('calendarHeadTitle').innerHTML = t.calendarHeadTitle;
-            document.getElementById('calendarHeadText').innerHTML = t.calendarHeadText;
-            document.getElementById('calendarHeadBtn').innerHTML = t.calendarHeadBtn;
-            document.getElementById('galleryHeadTitle').innerHTML = t.galleryHeadTitle;
-            document.getElementById('galleryHeadText').innerHTML = t.galleryHeadText;
-            document.getElementById('galleryHeadBtn').innerHTML = t.galleryHeadBtn;
+            document.getElementById('heroDesc').innerHTML = t.heroDesc;
+            document.getElementById('ctaButton').innerHTML = t.ctaButton;
+            document.getElementById('faqHeadTitle').innerHTML = t.faqHeadTitle;
+            document.getElementById('faqHeadDesc').innerHTML = t.faqHeadDesc;
+            document.getElementById('faqHeadBtn').innerHTML = t.faqHeadBtn;
             document.getElementById('termsText').innerHTML = t.terms;
-
             document.getElementById('html-root').setAttribute('lang', currentLang);
         }
-
-        function toggleVideoPlay() {
-            const video = document.getElementById('customVideo');
-            const container = document.getElementById('videoContainer');
-
-            if (video.paused) {
-                video.play();
-                container.classList.add('playing');
-                video.setAttribute('controls', 'controls');
-            } else {
-                video.pause();
-                container.classList.remove('playing');
-                video.removeAttribute('controls');
-            }
-        }
     </script>
-
 </body>
 </html>
