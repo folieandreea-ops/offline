@@ -23,7 +23,7 @@
             top: 20px;
             right: 20px;
             display: flex;
-            gap: 24px;
+            gap: 20px;
             align-items: center;
             z-index: 100;
             background: rgba(0, 0, 0, 0.85);
@@ -366,7 +366,7 @@
                 top: 15px;
                 right: 15px;
                 padding: 6px 12px;
-                gap: 12px;
+                gap: 10px;
                 overflow-x: auto;
                 max-width: 90vw;
             }
@@ -378,13 +378,14 @@
 </head>
 <body>
 
-    <!-- Meniul din dreapta sus -->
+    <!-- Meniul din dreapta sus (Acum include și FAQ) -->
     <div class="nav-right">
         <button class="lang-btn" id="langToggle" onclick="switchLanguage()">EN</button>
         <a href="#cine-suntem" class="nav-link" id="navAbout">Cine suntem</a>
         <a href="#why-offline" class="nav-link" id="navWhy">Povestea Offline</a>
         <a href="#misiunea" class="nav-link" id="navMission">Misiunea Offline</a>
         <a href="calendar.html" class="nav-link" id="navCalendar">Calendar</a>
+        <a href="faq.html" class="nav-link" id="navFaq">FAQ</a>
         <a href="galerie.html" class="nav-link" id="navGallery">Galerie Foto</a>
     </div>
 
@@ -510,6 +511,7 @@
                 navWhy: "Povestea Offline",
                 navMission: "Misiunea Offline",
                 navCalendar: "Calendar",
+                navFaq: "FAQ",
                 navGallery: "Galerie Foto",
                 heroTitle: "Mai puțin scroll.<br>Mai mult <span class='spark'>spark.</span>",
                 heroSubtitle: "Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.",
@@ -541,6 +543,7 @@
                 navWhy: "Offline Story",
                 navMission: "Offline Mission",
                 navCalendar: "Calendar",
+                navFaq: "FAQ",
                 navGallery: "Photo Gallery",
                 heroTitle: "Less scroll.<br>More <span class='spark'>spark.</span>",
                 heroSubtitle: "Two hours away from screens. New people, honest conversations, and room for a connection that starts in real life.",
@@ -577,6 +580,7 @@
             document.getElementById('navWhy').innerHTML = t.navWhy;
             document.getElementById('navMission').innerHTML = t.navMission;
             document.getElementById('navCalendar').innerHTML = t.navCalendar;
+            document.getElementById('navFaq').innerHTML = t.navFaq;
             document.getElementById('navGallery').innerHTML = t.navGallery;
             document.getElementById('heroTitle').innerHTML = t.heroTitle;
             document.getElementById('heroSubtitle').innerHTML = t.heroSubtitle;
