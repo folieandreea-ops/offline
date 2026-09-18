@@ -57,15 +57,15 @@
             border-color: #ffffff;
         }
 
-        /* Prima secțiune (Hero) */
+        /* Prima secțiune (Hero) - spațiere generoasă jos */
         .hero-section {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 100px 20px;
             box-sizing: border-box;
         }
         .hero-text {
@@ -108,13 +108,13 @@
             box-shadow: 0 15px 25px rgba(255, 42, 133, 0.4);
         }
 
-        /* Secțiunile detaliate (Grilă comună pentru simetrie) */
+        /* Secțiunile detaliate (Grilă comună pentru simetrie) - spațiere mărită între ele */
         .details-section {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 120px 40px 60px 40px;
+            padding: 100px 40px;
             max-width: 1200px;
             margin: 0 auto;
             box-sizing: border-box;
@@ -228,12 +228,12 @@
             pointer-events: none;
         }
 
-        /* Stil comun pentru secțiunile text simple */
+        /* Stil comun pentru secțiunile text simple - spațiere mărită */
         .text-section {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 40px 60px 40px;
+            padding: 100px 40px;
             box-sizing: border-box;
         }
         .text-content-inner h2 {
@@ -256,7 +256,7 @@
         /* Subsolul paginii centrat cu logo, social media și termeni */
         .footer-section {
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px 60px 20px;
             width: 100%;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
@@ -264,7 +264,7 @@
             align-items: center;
             gap: 20px;
             box-sizing: border-box;
-            margin-top: 60px;
+            margin-top: 80px;
         }
         .footer-section img {
             max-width: 150px;
@@ -312,6 +312,9 @@
 
         /* --- OPTIMIZARE PENTRU TELEFOANE --- */
         @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 20px;
+            }
             .hero-text {
                 font-size: 2rem;
             }
@@ -323,8 +326,8 @@
                 padding: 12px 24px;
                 font-size: 0.95rem;
             }
-            .details-section {
-                padding: 100px 20px 20px 20px;
+            .details-section, .text-section {
+                padding: 70px 20px;
             }
             .details-grid {
                 grid-template-columns: 1fr;
@@ -354,9 +357,6 @@
             .custom-play-btn svg {
                 width: 22px;
                 height: 22px;
-            }
-            .text-section {
-                padding: 40px 20px 40px 20px;
             }
             .text-content-inner p {
                 font-size: 1.05rem;
@@ -398,7 +398,7 @@
     </div>
 
     <!-- Secțiunea Cine suntem -->
-    <div id="cine-suntem" class="text-section" style="padding-top: 100px;">
+    <div id="cine-suntem" class="text-section">
         <div class="details-grid" style="align-items: center;">
             <div class="text-content-inner">
                 <h2 id="aboutTitle">Cine <span class="spark">suntem</span></h2>
@@ -464,7 +464,7 @@
     </div>
 
     <!-- Secțiunea Calendar Evenimente Headliner -->
-    <div class="text-section" style="text-align: center; padding: 60px 20px;">
+    <div class="text-section" style="text-align: center;">
         <div class="text-content-inner" style="max-width: 800px; margin: 0 auto;">
             <h2 id="calendarHeadTitle" style="text-align: center;">Calendar <span class="spark">Evenimente</span></h2>
             <p id="calendarHeadText" style="text-align: center; margin-bottom: 30px;">Vezi când este următoarea noastră întâlnire în București și rezervă-ți locul pentru următoarea experiență Offline.</p>
@@ -473,7 +473,7 @@
     </div>
 
     <!-- Secțiunea Galerie Foto Headliner -->
-    <div class="text-section" style="text-align: center; padding: 20px 20px 80px 20px;">
+    <div class="text-section" style="text-align: center;">
         <div class="text-content-inner" style="max-width: 800px; margin: 0 auto;">
             <h2 id="galleryHeadTitle" style="text-align: center;">Galerie <span class="spark">Foto</span></h2>
             <p id="galleryHeadText" style="text-align: center; margin-bottom: 30px;">Zâmbete, conexiuni reale și momente surprinse la întâlnirile noastre. Aruncă o privire în universul Offline.</p>
