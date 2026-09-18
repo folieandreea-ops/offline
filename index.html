@@ -382,6 +382,7 @@
         <a href="#cine-suntem" class="nav-link" id="navAbout">Cine suntem</a>
         <a href="#why-offline" class="nav-link" id="navWhy">Povestea Offline</a>
         <a href="#misiunea" class="nav-link" id="navMission">Misiunea Offline</a>
+        <a href="galerie.html" class="nav-link" id="navGallery">Galerie Foto</a>
     </div>
 
     <!-- Prima secțiune (Hero) -->
@@ -461,6 +462,15 @@
         </div>
     </div>
 
+    <!-- Secțiunea Galerie Foto Headliner -->
+    <div class="text-section" style="text-align: center; padding: 80px 20px;">
+        <div class="text-content-inner" style="max-width: 800px; margin: 0 auto;">
+            <h2 id="galleryHeadTitle" style="text-align: center;">Galerie <span class="spark">Foto</span></h2>
+            <p id="galleryHeadText" style="text-align: center; margin-bottom: 30px;">Zâmbete, conexiuni reale și momente surprinse la întâlnirile noastre. Aruncă o privire în universul Offline.</p>
+            <a href="galerie.html" class="cta-btn" id="galleryHeadBtn">Vezi galeria foto</a>
+        </div>
+    </div>
+
     <!-- Subsolul paginii cu Logo, Social Media și Termeni -->
     <div class="footer-section">
         <img src="WhatsApp Image 2026-09-15 at 09.19.50.jpeg" alt="OFFLINE">
@@ -487,6 +497,7 @@
                 navAbout: "Cine suntem",
                 navWhy: "Povestea Offline",
                 navMission: "Misiunea Offline",
+                navGallery: "Galerie Foto",
                 heroTitle: "Mai puțin scroll.<br>Mai mult <span class='spark'>spark.</span>",
                 heroSubtitle: "Două ore departe de ecrane. Oameni noi, conversații sincere și loc pentru o conexiune care începe în viața reală.",
                 ctaBtn: "Descoperă următoarea întâlnire",
@@ -503,6 +514,9 @@
                 missionText1: "Misiunea noastră este deconectarea pentru reconectare (Disconnect to reconnect).",
                 missionText2: "Să creăm un spațiu în care oricine vine singur să se simtă integrat și binevenit încă din primele minute.",
                 missionText3: "Să construim o comunitate, nu doar un eveniment: Să demonstrăm că oamenii din București încă își doresc prietenii noi, râsete sincere și chimie reală, iar tot ce le lipsea era contextul potrivit.",
+                galleryHeadTitle: 'Galerie <span class="spark">Foto</span>',
+                galleryHeadText: "Zâmbete, conexiuni reale și momente surprinse la întâlnirile noastre. Aruncă o privire în universul Offline.",
+                galleryHeadBtn: "Vezi galeria foto",
                 terms: "Termeni și Condiții"
             },
             en: {
@@ -510,6 +524,7 @@
                 navAbout: "Who we are",
                 navWhy: "Offline Story",
                 navMission: "Offline Mission",
+                navGallery: "Photo Gallery",
                 heroTitle: "Less scroll.<br>More <span class='spark'>spark.</span>",
                 heroSubtitle: "Two hours away from screens. New people, honest conversations, and room for a connection that starts in real life.",
                 ctaBtn: "Discover the next meetup",
@@ -526,6 +541,9 @@
                 missionText1: "Our mission is disconnecting to reconnect.",
                 missionText2: "To create a space where anyone coming alone feels integrated and welcome from the very first minutes.",
                 missionText3: "To build a community, not just an event: To prove that people in Bucharest still want new friendships, sincere laughter, and real chemistry, and all they were missing was the right context.",
+                galleryHeadTitle: 'Photo <span class="spark">Gallery</span>',
+                galleryHeadText: "Smiles, real connections, and moments captured at our meetups. Take a peek into the Offline universe.",
+                galleryHeadBtn: "View photo gallery",
                 terms: "Terms and Conditions"
             }
         };
@@ -538,6 +556,7 @@
             document.getElementById('navAbout').innerHTML = t.navAbout;
             document.getElementById('navWhy').innerHTML = t.navWhy;
             document.getElementById('navMission').innerHTML = t.navMission;
+            document.getElementById('navGallery').innerHTML = t.navGallery;
             document.getElementById('heroTitle').innerHTML = t.heroTitle;
             document.getElementById('heroSubtitle').innerHTML = t.heroSubtitle;
             document.getElementById('ctaButton').innerHTML = t.ctaBtn;
@@ -554,6 +573,9 @@
             document.getElementById('missionText1').innerHTML = t.missionText1;
             document.getElementById('missionText2').innerHTML = t.missionText2;
             document.getElementById('missionText3').innerHTML = t.missionText3;
+            document.getElementById('galleryHeadTitle').innerHTML = t.galleryHeadTitle;
+            document.getElementById('galleryHeadText').innerHTML = t.galleryHeadText;
+            document.getElementById('galleryHeadBtn').innerHTML = t.galleryHeadBtn;
             document.getElementById('termsText').innerHTML = t.terms;
 
             document.getElementById('html-root').setAttribute('lang', currentLang);
