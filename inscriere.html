@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Înscriere Eveniment | Offline București</title>
+    <title>Înscriere Eveniment | Offline Speed Dating</title>
     <style>
         html {
             scroll-behavior: smooth;
@@ -70,8 +70,8 @@
 
         .form-container {
             width: 100%;
-            max-width: 600px;
-            background: rgba(20, 20, 20, 0.7);
+            max-width: 650px;
+            background: rgba(20, 20, 20, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             padding: 40px;
@@ -107,7 +107,7 @@
 
         /* Câmpurile formularului */
         .input-group {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             text-align: left;
         }
 
@@ -144,7 +144,47 @@
 
         .input-group textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 90px;
+        }
+
+        /* Secțiunea de Siguranță și Consimțământ (Checkboxes) */
+        .consent-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .consent-box h3 {
+            font-size: 0.95rem;
+            color: #ff75bc;
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.88rem;
+            color: #b0b0b0;
+            line-height: 1.5;
+            cursor: pointer;
+            margin-bottom: 12px;
+        }
+
+        .checkbox-label:last-child {
+            margin-bottom: 0;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin-top: 3px;
+            accent-color: #ff2a85;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
         }
 
         /* Butonul de trimitere */
@@ -160,7 +200,6 @@
             cursor: pointer;
             box-shadow: 0 10px 20px rgba(255, 42, 133, 0.3);
             transition: all 0.3s ease;
-            margin-top: 10px;
         }
 
         .submit-btn:hover {
@@ -169,7 +208,7 @@
             box-shadow: 0 15px 25px rgba(255, 42, 133, 0.4);
         }
 
-        /* Mesaj de succes ascuns inițial */
+        /* Mesaj de succes */
         .success-message {
             display: none;
             text-align: center;
@@ -248,53 +287,73 @@
             <div id="formContent">
                 <div class="form-header">
                     <h1 id="formTitle">Rezervă-ți locul <span class="spark">Offline</span></h1>
-                    <p id="formSubtitle">Completează datele de mai jos pentru a te înscrie la următoarea întâlnire din București.</p>
+                    <p id="formSubtitle">Completează formularul de mai jos. Locurile sunt limitate pentru a asigura un echilibru perfect și o atmosferă sigură și relaxată.</p>
                 </div>
 
-                <!-- Aici poți adăuga acțiunea ta de backend sau un serviciu de tip Formspree / Google Sheets -->
+                <!-- NOTĂ: Aici poți adăuga acțiunea ta de la Microsoft Forms / Formspree -->
                 <form id="registrationForm" onsubmit="handleFormSubmit(event)">
                     <div class="input-group">
                         <label for="fullName" id="labelName">Nume și Prenume</label>
-                        <input type="text" id="fullName" required placeholder="ex: Andreea Popescu">
+                        <input type="text" id="fullName" name="Nume" required placeholder="ex: Andreea Popescu">
                     </div>
 
                     <div class="input-group">
                         <label for="email" id="labelEmail">Adresă de Email</label>
-                        <input type="email" id="email" required placeholder="nume@exemplu.com">
+                        <input type="email" id="email" name="Email" required placeholder="nume@exemplu.com">
                     </div>
 
                     <div class="input-group">
-                        <label for="phone" id="labelPhone">Număr de Telefon</label>
-                        <input type="tel" id="phone" required placeholder="07xxxxxxxx">
+                        <label for="phone" id="labelPhone">Număr de Telefon (pentru confirmare WhatsApp)</label>
+                        <input type="tel" id="phone" name="Telefon" required placeholder="07xxxxxxxx">
                     </div>
 
                     <div class="input-group">
                         <label for="age" id="labelAge">Vârsta</label>
-                        <input type="number" id="age" min="18" max="99" required placeholder="ex: 26">
+                        <input type="number" id="age" name="Varsta" min="18" max="99" required placeholder="ex: 26">
                     </div>
 
                     <div class="input-group">
-                        <label for="edition" id="labelEdition">Ediția / Data la care vrei să participi</label>
-                        <select id="edition" required>
+                        <label for="edition" id="labelEdition">Ediția la care dorești să participi</label>
+                        <select id="edition" name="Editie" required>
                             <option value="" disabled selected id="selectPlaceholder">Alege o ediție...</option>
-                            <option value="joi-seara">Următoarea Joi - Seara de Conectare</option>
-                            <option value="editie-speciala">Ediție Specială de Weekend</option>
+                            <option value="Joi - Seara de Conectare">Următoarea Joi - Speed Dating & Conexiuni</option>
+                            <option value="Editie Speciala de Weekend">Ediție Specială de Weekend</option>
                         </select>
                     </div>
 
                     <div class="input-group">
-                        <label for="reason" id="labelReason">Ce te aduce la Offline? (opțional)</label>
-                        <textarea id="reason" placeholder="Spune-ne două vorbe sau ce așteptări ai..."></textarea>
+                        <label for="intent" id="labelIntent">Ce cauți la o astfel de întâlnire?</label>
+                        <select id="intent" name="Intentie" required>
+                            <option value="" disabled selected id="selectIntentPlaceholder">Alege opțiunea principală...</option>
+                            <option value="Dating & Romantism">Dating și chimie romantică</option>
+                            <option value="Prieteni noi & Comunitate">Prieteni noi și extinderea cercului social</option>
+                            <option value="Ambele / Deschis">Deschis/ă la orice tip de conexiune autentică</option>
+                        </select>
                     </div>
 
-                    <button type="submit" class="submit-btn" id="submitBtn">Trimite Înscrierea</button>
+                    <!-- Secțiunea de Siguranță, Respect și Consimțământ -->
+                    <div class="consent-box">
+                        <h3 id="consentHeader">Codul de Conduită & Consimțământ</h3>
+                        
+                        <label class="checkbox-label">
+                            <input type="checkbox" required name="ConsentRespect">
+                            <span id="consentText1">Confirm că voi respecta limitele, intimitatea și confortul celorlalți participanți. La Offline promovăm un mediu bazat pe respect reciproc și consimțământ explicit.</span>
+                        </label>
+
+                        <label class="checkbox-label">
+                            <input type="checkbox" required name="ConsentPhone">
+                            <span id="consentText2">Înțeleg și accept că evenimentul este 100% fără ecrane (telefoanele rămân în geantă/buzunar pe silent pe toată durata întâlnirii).</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">Trimite Înscrierea în Siguranță</button>
                 </form>
             </div>
 
-            <!-- Mesajul de succes (afișat după trimitere) -->
+            <!-- Mesaj de succes -->
             <div id="successMessage" class="success-message">
-                <h2 id="successTitle">Înscriere <span class="spark">reușită!</span></h2>
-                <p id="successText">Îți mulțumim! Te-am înregistrat cu succes. Te vom contacta în curând pe email sau WhatsApp cu detaliile pentru evenimentul Offline.</p>
+                <h2 id="successTitle">Înscriere <span class="spark">înregistrată!</span></h2>
+                <p id="successText">Îți mulțumim pentru încredere! Am primit datele tale. Echipa noastră va analiza cererea pentru a menține un echilibru optim și te va contacta în curând pe WhatsApp / email cu confirmarea locului și locația exactă.</p>
             </div>
 
         </div>
@@ -305,7 +364,7 @@
         <a href="terms.html" class="terms-link" id="termsText">Termeni și Condiții</a>
     </div>
 
-    <!-- Script pentru schimbarea limbii și simularea trimiterii -->
+    <!-- Script pentru limbă și trimitere -->
     <script>
         let currentLang = 'ro';
 
@@ -316,17 +375,21 @@
                 navCalendar: "Calendar",
                 navFaq: "FAQ",
                 formTitle: 'Rezervă-ți locul <span class="spark">Offline</span>',
-                formSubtitle: "Completează datele de mai jos pentru a te înscrie la următoarea întâlnire din București.",
+                formSubtitle: "Completează formularul de mai jos. Locurile sunt limitate pentru a asigura un echilibru perfect și o atmosferă sigură și relaxată.",
                 labelName: "Nume și Prenume",
                 labelEmail: "Adresă de Email",
-                labelPhone: "Număr de Telefon",
+                labelPhone: "Număr de Telefon (pentru confirmare WhatsApp)",
                 labelAge: "Vârsta",
-                labelEdition: "Ediția / Data la care vrei să participi",
+                labelEdition: "Ediția la care dorești să participi",
                 selectPlaceholder: "Alege o ediție...",
-                labelReason: "Ce te aduce la Offline? (opțional)",
-                submitBtn: "Trimite Înscrierea",
-                successTitle: 'Înscriere <span class="spark">reușită!</span>',
-                successText: "Îți mulțumim! Te-am înregistrat cu succes. Te vom contacta în curând pe email sau WhatsApp cu detaliile pentru evenimentul Offline.",
+                labelIntent: "Ce cauți la o astfel de întâlnire?",
+                selectIntentPlaceholder: "Alege opțiunea principală...",
+                consentHeader: "Codul de Conduită & Consimțământ",
+                consentText1: "Confirm că voi respecta limitele, intimitatea și confortul celorlalți participanți. La Offline promovăm un mediu bazat pe respect reciproc și consimțământ explicit.",
+                consentText2: "Înțeleg și accept că evenimentul este 100% fără ecrane (telefoanele rămân în geantă/buzunar pe silent pe toată durata întâlnirii).",
+                submitBtn: "Trimite Înscrierea în Siguranță",
+                successTitle: 'Înscriere <span class="spark">înregistrată!</span>',
+                successText: "Îți mulțumim pentru încredere! Am primit datele tale. Echipa noastră va analiza cererea pentru a menține un echilibru optim și te va contacta în curând pe WhatsApp / email cu confirmarea locului și locația exactă.",
                 terms: "Termeni și Condiții"
             },
             en: {
@@ -335,17 +398,21 @@
                 navCalendar: "Calendar",
                 navFaq: "FAQ",
                 formTitle: 'Reserve your <span class="spark">Offline</span> spot',
-                formSubtitle: "Fill in the details below to sign up for our next meetup in Bucharest.",
+                formSubtitle: "Fill out the form below. Spots are limited to ensure a perfect balance and a safe, relaxed atmosphere.",
                 labelName: "Full Name",
                 labelEmail: "Email Address",
-                labelPhone: "Phone Number",
+                labelPhone: "Phone Number (for WhatsApp confirmation)",
                 labelAge: "Age",
-                labelEdition: "Edition / Date you want to attend",
+                labelEdition: "Edition you wish to attend",
                 selectPlaceholder: "Choose an edition...",
-                labelReason: "What brings you to Offline? (optional)",
-                submitBtn: "Submit Registration",
-                successTitle: 'Registration <span class="spark">successful!</span>',
-                successText: "Thank you! You've successfully registered. We will contact you soon via email or WhatsApp with details for the Offline event.",
+                labelIntent: "What are you looking for at this meetup?",
+                selectIntentPlaceholder: "Choose main option...",
+                consentHeader: "Code of Conduct & Consent",
+                consentText1: "I confirm that I will respect the boundaries, privacy, and comfort of other participants. At Offline, we foster an environment built on mutual respect and explicit consent.",
+                consentText2: "I understand and accept that the event is 100% screen-free (phones stay in your bag/pocket on silent for the entire duration).",
+                submitBtn: "Submit Secure Registration",
+                successTitle: 'Registration <span class="spark">submitted!</span>',
+                successText: "Thank you for your trust! We have received your details. Our team will review your application to maintain an optimal balance and will contact you soon via WhatsApp / email with your spot confirmation and exact location.",
                 terms: "Terms and Conditions"
             }
         };
@@ -366,7 +433,11 @@
             document.getElementById('labelAge').innerHTML = t.labelAge;
             document.getElementById('labelEdition').innerHTML = t.labelEdition;
             document.getElementById('selectPlaceholder').innerHTML = t.selectPlaceholder;
-            document.getElementById('labelReason').innerHTML = t.labelReason;
+            document.getElementById('labelIntent').innerHTML = t.labelIntent;
+            document.getElementById('selectIntentPlaceholder').innerHTML = t.selectIntentPlaceholder;
+            document.getElementById('consentHeader').innerHTML = t.consentHeader;
+            document.getElementById('consentText1').innerHTML = t.consentText1;
+            document.getElementById('consentText2').innerHTML = t.consentText2;
             document.getElementById('submitBtn').innerHTML = t.submitBtn;
             document.getElementById('successTitle').innerHTML = t.successTitle;
             document.getElementById('successText').innerHTML = t.successText;
@@ -381,9 +452,6 @@
             // Ascunde formularul și afișează mesajul de succes stilizat
             document.getElementById('formContent').style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
-
-            // Dacă dorești să trimiți datele efectiv (de exemplu către Formspree, Netlify Forms sau un Google Sheet), 
-            // poți adăuga codul de fetch aici.
         }
     </script>
 
