@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ro" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Evenimente | Offline</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Navigare sus */
+        .nav-right {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 6px 12px;
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+        }
+        .nav-link {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+        }
+        .lang-btn {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        .spark {
+            background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 50%, #441128 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Conținutul paginii de calendar */
+        .calendar-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .calendar-container h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        .calendar-container p {
+            font-size: 1.15rem;
+            color: #a0a0a0;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        .back-btn {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .back-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        /* Subsol simplu */
+        .footer-section {
+            text-align: center;
+            padding: 40px 20px;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            box-sizing: border-box;
+        }
+        .footer-section a {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        .footer-section a:hover {
+            color: #ffffff;
+        }
+
+        /* Optimizare mobil */
+        @media (max-width: 768px) {
+             .calendar-container h1 {
+                font-size: 2rem;
+            }
+            .calendar-container p {
+                font-size: 1rem;
+            }
+            .nav-right {
+                top: 15px;
+                right: 15px;
+                padding: 4px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Meniul din dreapta sus -->
+    <div class="nav-right">
+        <button class="lang-btn" id="langToggle" onclick="switchLanguage()">EN</button>
+        <a href="index.html" class="nav-link" id="navHome">Acasă</a>
+    </div>
+
+    <div class="calendar-container">
+        <h1 id="calTitle">Calendar <span class="spark">Evenimente</span></h1>
+        <p id="calText">Următoarele întâlniri Offline și datele disponibile vor fi afișate aici în curând. Pregătește-te pentru o experiență fără ecrane!</p>
+        <a href="index.html" class="back-btn" id="backBtn">Înapoi la pagina principală</a>
+    </div>
+
+    <div class="footer-section">
+        <a href="index.html" id="footerBack">Offline © 2026</a>
+    </div>
+
+    <script>
+        let currentLang = 'ro';
+
+        const texts = {
+            ro: {
+                langBtn: "EN",
+                navHome: "Acasă",
+                calTitle: 'Calendar <span class="spark">Evenimente</span>',
+                calText: "Următoarele întâlniri Offline și datele disponibile vor fi afișate aici în curând. Pregătește-te pentru o experiență fără ecrane!",
+                backBtn: "Înapoi la pagina principală",
+                footerBack: "Offline © 2026"
+            },
+            en: {
+                langBtn: "RO",
+                navHome: "Home",
+                calTitle: 'Event <span class="spark">Calendar</span>',
+                calText: "Upcoming Offline meetups and available dates will be displayed here soon. Get ready for a screen-free experience!",
+                backBtn: "Back to home page",
+                footerBack: "Offline © 2026"
+            }
+        };
+
+        function switchLanguage() {
+            currentLang = currentLang === 'ro' ? 'en' : 'ro';
+            const t = texts[currentLang];
+
+            document.getElementById('langToggle').innerHTML = t.langBtn;
+            document.getElementById('navHome').innerHTML = t.navHome;
+            document.getElementById('calTitle').innerHTML = t.calTitle;
+            document.getElementById('calText').innerHTML = t.calText;
+            document.getElementById('backBtn').innerHTML = t.backBtn;
+            document.getElementById('footerBack').innerHTML = t.footerBack;
+
+            document.getElementById('html-root').setAttribute('lang', currentLang);
+        }
+    </script>
+</body>
+</html>
