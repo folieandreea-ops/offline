@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerie Foto | Offline</title>
+    <title>Galerie Foto | Consimțământ | Offline</title>
     <style>
         body {
             background-color: #000000;
@@ -16,7 +16,7 @@
             box-sizing: border-box;
         }
 
-        /* Navigare sus - identică cu cea principală */
+        /* Navigare sus */
         .nav-right {
             position: fixed;
             top: 20px;
@@ -81,8 +81,20 @@
             font-size: 1.15rem;
             color: #a0a0a0;
             line-height: 1.6;
-            margin-bottom: 40px;
+            margin-bottom: 30px; /* Redus puțin spațiul pentru a face loc noului paragraf */
         }
+
+        /* Stilul pentru notificarea de consimțământ (mai mic și discret) */
+        .consent-notice {
+            font-size: 0.9rem;
+            color: #888888;
+            font-style: italic;
+            margin-bottom: 40px;
+            max-width: 600px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+        }
+
         .back-btn {
             background: transparent;
             color: #ffffff;
@@ -126,6 +138,9 @@
             .gallery-container p {
                 font-size: 1rem;
             }
+            .consent-notice {
+                font-size: 0.85rem;
+            }
             .nav-right {
                 top: 15px;
                 right: 15px;
@@ -136,7 +151,7 @@
 </head>
 <body>
 
-    <!-- Meniul din dreapta sus (inclusiv butonul de limbă) -->
+    <!-- Meniul din dreapta sus -->
     <div class="nav-right">
         <button class="lang-btn" id="langToggle" onclick="switchLanguage()">EN</button>
         <a href="index.html" class="nav-link" id="navHome">Acasă</a>
@@ -145,6 +160,12 @@
     <div class="gallery-container">
         <h1 id="galTitle">Galerie <span class="spark">Foto</span></h1>
         <p id="galText">Curând aici vor apărea cele mai frumoase momente, zâmbete și instantanee de la întâlnirile Offline. Rămâi aproape!</p>
+        
+        <!-- Paragraful nou adăugat pentru consimțământ -->
+        <p class="consent-notice" id="consentText">
+            * Toate fotografiile și videoclipurile sunt realizate și publicate exclusiv cu acordul explicit și consimțământul participanților prezenți la eveniment.
+        </p>
+        
         <a href="index.html" class="back-btn" id="backBtn">Înapoi la pagina principală</a>
     </div>
 
@@ -161,6 +182,7 @@
                 navHome: "Acasă",
                 galTitle: 'Galerie <span class="spark">Foto</span>',
                 galText: "Curând aici vor apărea cele mai frumoase momente, zâmbete și instantanee de la întâlnirile Offline. Rămâi aproape!",
+                consentText: "* Toate fotografiile și videoclipurile sunt realizate și publicate exclusiv cu acordul explicit și consimțământul participanților prezenți la eveniment.",
                 backBtn: "Înapoi la pagina principală",
                 footerBack: "Offline © 2026"
             },
@@ -169,6 +191,7 @@
                 navHome: "Home",
                 galTitle: 'Photo <span class="spark">Gallery</span>',
                 galText: "Soon, the most wonderful moments, smiles, and snapshots from Offline meetups will appear here. Stay tuned!",
+                consentText: "* All photos and videos are taken and published exclusively with the explicit agreement and consent of the participants present at the event.",
                 backBtn: "Back to home page",
                 footerBack: "Offline © 2026"
             }
@@ -182,6 +205,7 @@
             document.getElementById('navHome').innerHTML = t.navHome;
             document.getElementById('galTitle').innerHTML = t.galTitle;
             document.getElementById('galText').innerHTML = t.galText;
+            document.getElementById('consentText').innerHTML = t.consentText;
             document.getElementById('backBtn').innerHTML = t.backBtn;
             document.getElementById('footerBack').innerHTML = t.footerBack;
 
