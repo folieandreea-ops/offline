@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ro" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Întrebări Frecvente - Offline</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigare sus */
+        .nav-right {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 8px 18px;
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+        }
+        .nav-link {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+        }
+        .lang-btn {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        .spark {
+            background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 50%, #441128 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Container Principal FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 140px 20px 80px 20px;
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .faq-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .faq-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .faq-header p {
+            color: #a0a0a0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Accordion Style */
+        .faq-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+        .faq-item:hover {
+            border-color: rgba(255, 117, 188, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .faq-question {
+            padding: 22px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+        .faq-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+            color: #ff75bc;
+            transition: transform 0.3s ease;
+            margin-left: 15px;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0, 1, 0, 1), padding 0.35s ease;
+            padding: 0 25px;
+            color: #a0a0a0;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            padding: 0 25px 22px 25px;
+            transition: max-height 0.5s ease-in-out, padding 0.35s ease;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Subsol */
+        .footer-section {
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            box-sizing: border-box;
+            margin-top: auto;
+        }
+        .footer-section img {
+            max-width: 130px;
+            height: auto;
+        }
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .social-icon-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .social-icon-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+            transition: fill 0.3s ease;
+        }
+        .social-icon-btn:hover {
+            background-color: #ffffff;
+            border-color: #ffffff;
+        }
+        .social-icon-btn:hover svg {
+            fill: #000000;
+        }
+        .terms-link {
+            color: #a0a0a0;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .terms-link:hover {
+            color: #ffffff;
+        }
+
+        /* Mobil */
+        @media (max-width: 768px) {
+            .faq-container {
+                padding: 100px 20px 60px 20px;
+            }
+            .faq-header h1 {
+                font-size: 2rem;
+            }
+            .faq-question {
+                padding: 18px 20px;
+                font-size: 1rem;
+            }
+            .faq-item.active .faq-answer {
+                padding: 0 20px 18px 20px;
+            }
+            .nav-right {
+                top: 15px;
+                right: 15px;
+                padding: 6px 12px;
+                gap: 12px;
+                overflow-x: auto;
+                max-width: 90vw;
+            }
+            .nav-link {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Meniul din dreapta sus -->
+    <div class="nav-right">
+        <button class="lang-btn" id="langToggle" onclick="switchLanguage()">EN</button>
+        <a href="index.html" class="nav-link" id="navHome">Acasă</a>
+        <a href="calendar.html" class="nav-link" id="navCalendar">Calendar</a>
+        <a href="galerie.html" class="nav-link" id="navGallery">Galerie Foto</a>
+    </div>
+
+    <!-- Conținut FAQ -->
+    <div class="faq-container">
+        <div class="faq-header">
+            <h1 id="pageTitle">Întrebări <span class="spark">Frecvente</span></h1>
+            <p id="pageSubtitle">Tot ce trebuie să știi înainte de a veni la o întâlnire Offline.</p>
+        </div>
+
+        <div class="faq-accordion">
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span id="q1Title">Pot să vin singur(ă)?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="q1Text">
+                    Absolut! Majoritatea participanților vin neînsoțiți. Întregul concept Offline este conceput pentru a te face să te simți integrat și primit cu căldură încă din primele momente.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span id="q2Title">Ce se întâmplă exact în cele două ore?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="q2Text">
+                    Avem un format relaxat: începem cu o scurtă introducere și un icebreaker prietenos care sparge gheața, urmat de rotații de conversație scurte și dinamice unde cunoști oameni noi. Nu există presiune, iar scopul este distracția și conectarea autentică.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span id="q3Title">Este un eveniment exclusiv pentru dating?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="q3Text">
+                    Nu neapărat. Deși oferim un cadru perfect pentru chimie romantică, Offline este despre conexiuni umane reale. Unii oameni își găsesc parteneri, alții își fac prieteni noi, iar mulți pleacă pur și simplu cu amintiri faine și conversații memorabile.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span id="q4Title">Trebuie să predau telefonul la intrare?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="q4Text">
+                    Încurajăm o experiență 100% fără ecrane pe durata evenimentului. Telefoanele rămân pe silent în geantă sau buzunar pentru a le oferi tuturor participanților atenție completă și o atmosferă fără distragere.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span id="q5Title">Care este codul vestimentar?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="q5Text">
+                    Imbracă-te așa cum te simți cel mai bine și mai încrezător. Nu există o regulă strictă — stilul casual sau smart-casual este perfect.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span id="q6Title">Cum pot să rezerv un loc?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="q6Text">
+                    Verifică pagina noastră de <a href="calendar.html" style="color: #ff75bc;">Calendar</a> sau urmărește-ne pe Instagram pentru a vedea datele viitoarelor întâlniri și linkul direct de înregistrare. Locurile sunt limitate pentru a păstra atmosfera intimă.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Subsol -->
+    <div class="footer-section">
+        <img src="WhatsApp Image 2026-09-15 at 09.19.50.jpeg" alt="OFFLINE">
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/getoffline404" target="_blank" class="social-icon-btn" title="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" class="social-icon-btn" title="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.37 14.5 5 15.5 5H18V0h-3.808C10.5 0 9 1.5 9 4.615V8z"/></svg>
+            </a>
+        </div>
+        <a href="terms.html" class="terms-link" id="termsText">Termeni și Condiții</a>
+    </div>
+
+    <!-- Script Accordion & Limbi -->
+    <script>
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const isOpen = item.classList.contains('active');
+            
+            // Închide toate celelalte întrebări
+            document.querySelectorAll('.faq-item').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Deschide dacă nu era deja deschisă
+            if (!isOpen) {
+                item.classList.add('active');
+            }
+        }
+
+        let currentLang = 'ro';
+
+        const texts = {
+            ro: {
+                langBtn: "EN",
+                navHome: "Acasă",
+                navCalendar: "Calendar",
+                navGallery: "Galerie Foto",
+                pageTitle: 'Întrebări <span class="spark">Frecvente</span>',
+                pageSubtitle: "Tot ce trebuie să știi înainte de a veni la o întâlnire Offline.",
+                q1T: "Pot să vin singur(ă)?",
+                q1A: "Absolut! Majoritatea participanților vin neînsoțiți. Întregul concept Offline este conceput pentru a te face să te simți integrat și primit cu căldură încă din primele momente.",
+                q2T: "Ce se întâmplă exact în cele două ore?",
+                q2A: "Avem un format relaxat: începem cu o scurtă introducere și un icebreaker prietenos care sparge gheața, urmat de rotații de conversație scurte și dinamice unde cunoști oameni noi. Nu există presiune, iar scopul este distracția și conectarea autentică.",
+                q3T: "Este un eveniment exclusiv pentru dating?",
+                q3A: "Nu neapărat. Deși oferim un cadru perfect pentru chimie romantică, Offline este despre conexiuni umane reale. Unii oameni își găsesc parteneri, alții își fac prieteni noi, iar mulți pleacă pur și simplu cu amintiri faine și conversații memorabile.",
+                q4T: "Trebuie să predau telefonul la intrare?",
+                q4A: "Încurajăm o experiență 100% fără ecrane pe durata evenimentului. Telefoanele rămân pe silent în geantă sau buzunar pentru a le oferi tuturor participanților atenție completă și o atmosferă fără distragere.",
+                q5T: "Care este codul vestimentar?",
+                q5A: "Imbracă-te așa cum te simți cel mai bine și mai încrezător. Nu există o regulă strictă — stilul casual sau smart-casual este perfect.",
+                q6T: "Cum pot să rezerv un loc?",
+                q6A: 'Verifică pagina noastră de <a href="calendar.html" style="color: #ff75bc;">Calendar</a> sau urmărește-ne pe Instagram pentru a vedea datele viitoarelor întâlniri și linkul direct de înregistrare. Locurile sunt limitate pentru a păstra atmosfera intimă.',
+                terms: "Termeni și Condiții"
+            },
+            en: {
+                langBtn: "RO",
+                navHome: "Home",
+                navCalendar: "Calendar",
+                navGallery: "Photo Gallery",
+                pageTitle: 'Frequently <span class="spark">Asked Questions</span>',
+                pageSubtitle: "Everything you need to know before coming to an Offline meetup.",
+                q1T: "Can I come alone?",
+                q1A: "Absolutely! The majority of attendees come by themselves. The entire Offline concept is designed to make you feel welcome and included from the very first moments.",
+                q2T: "What exactly happens during the two hours?",
+                q2A: "We have a relaxed format: we start with a short introduction and a friendly icebreaker, followed by short, dynamic conversation rounds where you meet new people. There's zero pressure, and the main goal is fun and authentic connection.",
+                q3T: "Is this strictly a dating event?",
+                q3A: "Not necessarily. While it provides a great environment for romantic chemistry, Offline is about real human connection. Some people find partners, others make new friends, and many simply leave with great memories and meaningful conversations.",
+                q4T: "Do I have to hand over my phone at the door?",
+                q4A: "We encourage a 100% screen-free experience during the event. Phones stay on silent in your bag or pocket so everyone receives undivided attention in a distraction-free environment.",
+                q5T: "What is the dress code?",
+                q5A: "Dress in whatever makes you feel your best and most confident. There are no strict rules — casual or smart-casual is perfect.",
+                q6T: "How do I reserve a spot?",
+                q6A: 'Check our <a href="calendar.html" style="color: #ff75bc;">Calendar</a> page or follow us on Instagram to see upcoming dates and direct registration links. Spots are limited to keep the atmosphere intimate.',
+                terms: "Terms & Conditions"
+            }
+        };
+
+        function switchLanguage() {
+            currentLang = currentLang === 'ro' ? 'en' : 'ro';
+            const t = texts[currentLang];
+
+            document.getElementById('langToggle').innerHTML = t.langBtn;
+            document.getElementById('navHome').innerHTML = t.navHome;
+            document.getElementById('navCalendar').innerHTML = t.navCalendar;
+            document.getElementById('navGallery').innerHTML = t.navGallery;
+            document.getElementById('pageTitle').innerHTML = t.pageTitle;
+            document.getElementById('pageSubtitle').innerHTML = t.pageSubtitle;
+            
+            document.getElementById('q1Title').innerHTML = t.q1T;
+            document.getElementById('q1Text').innerHTML = t.q1A;
+            document.getElementById('q2Title').innerHTML = t.q2T;
+            document.getElementById('q2Text').innerHTML = t.q2A;
+            document.getElementById('q3Title').innerHTML = t.q3T;
+            document.getElementById('q3Text').innerHTML = t.q3A;
+            document.getElementById('q4Title').innerHTML = t.q4T;
+            document.getElementById('q4Text').innerHTML = t.q4A;
+            document.getElementById('q5Title').innerHTML = t.q5T;
+            document.getElementById('q5Text').innerHTML = t.q5A;
+            document.getElementById('q6Title').innerHTML = t.q6T;
+            document.getElementById('q6Text').innerHTML = t.q6A;
+
+            document.getElementById('termsText').innerHTML = t.terms;
+            document.getElementById('html-root').setAttribute('lang', currentLang);
+        }
+    </script>
+</body>
+</html>
