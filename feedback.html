@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ro" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback & Survey | Offline Speed Dating București</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Meniul din dreapta sus */
+        .nav-right {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 8px 18px;
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+        }
+        .nav-link {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+        .nav-link:hover {
+            color: #ffffff;
+        }
+        .lang-btn {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .lang-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
+        .spark {
+            background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 50%, #441128 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Secțiunea principală cu formularul de feedback */
+        .feedback-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 140px 20px 80px 20px;
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .feedback-container {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .feedback-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .feedback-header h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .feedback-header p {
+            color: #a0a0a0;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Câmpurile formularului bazate pe cele 6 headline-uri */
+        .survey-block {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .survey-block h3 {
+            font-size: 1.05rem;
+            color: #ff75bc;
+            margin: 0 0 15px 0;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: #d0d0d0;
+            margin-bottom: 8px;
+        }
+
+        .input-group input, 
+        .input-group select, 
+        .input-group textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: #ffffff;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus, 
+        .input-group select:focus, 
+        .input-group textarea:focus {
+            border-color: #ff2a85;
+            box-shadow: 0 0 10px rgba(255, 42, 133, 0.2);
+        }
+
+        .input-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* Checkbox-uri stilizate */
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            line-height: 1.5;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .checkbox-label input[type="checkbox"] {
+            margin-top: 3px;
+            accent-color: #ff2a85;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* Buton de trimitere */
+        .submit-btn {
+            background: linear-gradient(135deg, #ff2a85 0%, #ff75bc 100%);
+            color: #ffffff;
+            width: 100%;
+            padding: 14px;
+            border-radius: 30px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 42, 133, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(255, 42, 133, 0.4);
+        }
+
+        /* Mesaj de succes */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .success-message h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        .success-message p {
+            color: #a0a0a0;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Subsol */
+        .footer-section {
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            box-sizing: border-box;
+            margin-top: auto;
+        }
+        .terms-link {
+            color: #a0a0a0;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .terms-link:hover {
+            color: #ffffff;
+        }
+
+        /* Mobil */
+        @media (max-width: 768px) {
+            .feedback-section {
+                padding: 100px 15px 60px 15px;
+            }
+            .feedback-container {
+                padding: 25px 20px;
+            }
+            .feedback-header h1 {
+                font-size: 1.8rem;
+            }
+            .nav-right {
+                top: 15px;
+                right: 15px;
+                padding: 6px 12px;
+                gap: 12px;
+                overflow-x: auto;
+                max-width: 90vw;
+            }
+            .nav-link {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Meniul din dreapta sus -->
+    <div class="nav-right">
+        <button class="lang-btn" id="langToggle" onclick="switchLanguage()">EN</button>
+        <a href="index.html" class="nav-link" id="navHome">Acasă</a>
+        <a href="calendar.html" class="nav-link" id="navCalendar">Calendar</a>
+        <a href="inscriere.html" class="nav-link" id="navRegister">Înscriere</a>
+        <a href="faq.html" class="nav-link" id="navFaq">FAQ</a>
+    </div>
+
+    <!-- Conținut Principal Feedback -->
+    <div class="feedback-section">
+        <div class="feedback-container">
+            
+            <div id="formContent">
+                <div class="feedback-header">
+                    <h1 id="pageTitle">Spune-ne părerea ta <span class="spark">Offline</span></h1>
+                    <p id="pageSubtitle">Sperăm că te-ai simțit bine aseară! Ajută-ne să îmbunătățim următoarele ediții completând acest scurt chestionar (durează 1 minut).</p>
+                </div>
+
+                <form id="feedbackForm" onsubmit="handleFeedbackSubmit(event)">
+                    
+                    <!-- 1. Evaluarea Generală -->
+                    <div class="survey-block">
+                        <h3 id="block1Title">1. Evaluarea Generală</h3>
+                        <div class="input-group">
+                            <label for="generalRating" id="labelGenRating">Cum ai descrie experiența ta la eveniment?</label>
+                            <select id="generalRating" required>
+                                <option value="" disabled selected id="selectRatingOpt">Alege o opțiune...</option>
+                                <option value="5">⭐⭐⭐⭐⭐ Extraordinar, exact ce aveam nevoie</option>
+                                <option value="4">⭐⭐⭐⭐ Foarte bine, mi-a plăcut mult energia</option>
+                                <option value="3">⭐⭐⭐ Destul de ok, dar e loc de mai bine</option>
+                                <option value="1-2">⭐/⭐⭐ Nu a fost pe gustul meu</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 2. Dinamica și Atmosfera -->
+                    <div class="survey-block">
+                        <h3 id="block2Title">2. Dinamica și Atmosfera</h3>
+                        <div class="input-group">
+                            <label for="atmosphere" id="labelAtmo">Cum ți s-a părut echilibrul și atmosfera serii?</label>
+                            <select id="atmosphere" required>
+                                <option value="" disabled selected id="selectAtmoOpt">Alege opțiunea principală...</option>
+                                <option value="relaxanta">Foarte relaxantă și naturală</option>
+                                <option value="dinamica">Dinamică, dar uneori puțin agitată</option>
+                                <option value="rigida">Rigidă la început, dar s-a dezghețat pe parcurs</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 3. Conexiuni & Match-uri -->
+                    <div class="survey-block">
+                        <h3 id="block3Title">3. Conexiuni & Match-uri (Opțional)</h3>
+                        <div class="input-group">
+                            <label for="connections" id="labelConn">Ai rezonat cu cineva anume și ai dori să reluăm legătura?</label>
+                            <textarea id="connections" placeholder="Menționează numele persoanei sau detalii dacă dorești să te ajutăm..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- 4. Organizare și Locație -->
+                    <div class="survey-block">
+                        <h3 id="block4Title">4. Organizare și Locație</h3>
+                        <div class="input-group">
+                            <label for="locationFeedback" id="labelLoc">Cum ți s-a părut locația aleasă și organizarea generală?</label>
+                            <textarea id="locationFeedback" placeholder="Impresii despre spațiu, sonorizare, gazde..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- 5. Îmbunătățiri pentru Viitor -->
+                    <div class="survey-block">
+                        <h3 id="block5Title">5. Îmbunătățiri pentru Viitor</h3>
+                        <div class="input-group">
+                            <label id="labelImprovements">Ce ai vrea să vezi diferit la edițiile următoare?</label>
+                            
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="futurePref" value="socializare">
+                                <span id="pref1">Mai mult timp pentru socializare liberă după activități</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="futurePref" value="tematice">
+                                <span id="pref2">Ediții tematice (ex: board games, wine tasting, artă)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="futurePref" value="locatii">
+                                <span id="pref3">Locații diferite în București</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 6. Mesaj de Final -->
+                    <div class="survey-block">
+                        <h3 id="block6Title">6. Mesaj de Final</h3>
+                        <div class="input-group">
+                            <label for="finalWord" id="labelFinal">Dacă ai avea un singur cuvânt sau o frază pentru a descrie seara, care ar fi?</label>
+                            <input type="text" id="finalWord" placeholder="ex: Magie, Conexiune pură, Surprinzător">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">Trimite Feedback-ul</button>
+                </form>
+            </div>
+
+            <!-- Mesaj de succes -->
+            <div id="successMessage" class="success-message">
+                <h2 id="successTitle">Feedback <span class="spark">înregistrat!</span></h2>
+                <p id="successText">Îți mulțumim din suflet pentru timp și deschidere! Contribuția ta ne ajută să construim o comunitate și mai autentică.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Subsol -->
+    <div class="footer-section">
+        <a href="index.html" class="terms-link" id="footerBack">Înapoi la pagina principală</a>
+    </div>
+
+    <!-- Script pentru comutarea limbii (RO / EN) -->
+    <script>
+        let currentLang = 'ro';
+
+        const texts = {
+            ro: {
+                langBtn: "EN",
+                navHome: "Acasă",
+                navCalendar: "Calendar",
+                navRegister: "Înscriere",
+                navFaq: "FAQ",
+                pageTitle: 'Spune-ne părerea ta <span class="spark">Offline</span>',
+                pageSubtitle: "Sperăm că te-ai simțit bine aseară! Ajută-ne să îmbunătățim următoarele ediții completând acest scurt chestionar (durează 1 minut).",
+                block1Title: "1. Evaluarea Generală",
+                labelGenRating: "Cum ai descrie experiența ta la eveniment?",
+                selectRatingOpt: "Alege o opțiune...",
+                block2Title: "2. Dinamica și Atmosfera",
+                labelAtmo: "Cum ți s-a părut echilibrul și atmosfera serii?",
+                selectAtmoOpt: "Alege opțiunea principală...",
+                block3Title: "3. Conexiuni & Match-uri (Opțional)",
+                labelConn: "Ai rezonat cu cineva anume și ai dori să reluăm legătura?",
+                block4Title: "4. Organizare și Locație",
+                labelLoc: "Cum ți s-a părut locația aleasă și organizarea generală?",
+                block5Title: "5. Îmbunătățiri pentru Viitor",
+                labelImprovements: "Ce ai vrea să vezi diferit la edițiile următoare?",
+                pref1: "Mai mult timp pentru socializare liberă după activități",
+                pref2: "Ediții tematice (ex: board games, wine tasting, artă)",
+                pref3: "Locații diferite în București",
+                block6Title: "6. Mesaj de Final",
+                labelFinal: "Dacă ai avea un singur cuvânt sau o frază pentru a descrie seara, care ar fi?",
+                submitBtn: "Trimite Feedback-ul",
+                successTitle: 'Feedback <span class="spark">înregistrat!</span>',
+                successText: "Îți mulțumim din suflet pentru timp și deschidere! Contribuția ta ne ajută să construim o comunitate și mai autentică.",
+                footerBack: "Înapoi la pagina principală"
+            },
+            en: {
+                langBtn: "RO",
+                navHome: "Home",
+                navCalendar: "Calendar",
+                navRegister: "Register",
+                navFaq: "FAQ",
+                pageTitle: 'Share your <span class="spark">Offline</span> feedback',
+                pageSubtitle: "We hope you had a great time last night! Help us improve future editions by completing this quick survey (takes just 1 minute).",
+                block1Title: "1. General Evaluation",
+                labelGenRating: "How would you describe your overall experience?",
+                selectRatingOpt: "Choose an option...",
+                block2Title: "2. Dynamics & Atmosphere",
+                labelAtmo: "How did you find the balance and atmosphere of the evening?",
+                selectAtmoOpt: "Choose main option...",
+                block3Title: "3. Connections & Matches (Optional)",
+                labelConn: "Did you resonate with anyone specific and want us to help reconnect?",
+                block4Title: "4. Venue & Organization",
+                labelLoc: "How did you find the chosen venue and overall organization?",
+                block5Title: "5. Future Improvements",
+                labelImprovements: "What would you like to see differently at future editions?",
+                pref1: "More time for free socialising after activities",
+                pref2: "Themed editions (e.g., board games, wine tasting, art)",
+                pref3: "Different venues across Bucharest",
+                block6Title: "6. Final Word",
+                labelFinal: "If you had a single word or phrase to describe the night, what would it be?",
+                submitBtn: "Submit Feedback",
+                successTitle: 'Feedback <span class="spark">submitted!</span>',
+                successText: "Thank you so much for your time and openness! Your input helps us build an even more authentic community.",
+                footerBack: "Back to Home"
+            }
+        };
+
+        function switchLanguage() {
+            currentLang = currentLang === 'ro' ? 'en' : 'ro';
+            const t = texts[currentLang];
+
+            document.getElementById('langToggle').innerHTML = t.langBtn;
+            document.getElementById('navHome').innerHTML = t.navHome;
+            document.getElementById('navCalendar').innerHTML = t.navCalendar;
+            document.getElementById('navRegister').innerHTML = t.navRegister;
+            document.getElementById('navFaq').innerHTML = t.navFaq;
+            document.getElementById('pageTitle').innerHTML = t.pageTitle;
+            document.getElementById('pageSubtitle').innerHTML = t.pageSubtitle;
+            document.getElementById('block1Title').innerHTML = t.block1Title;
+            document.getElementById('labelGenRating').innerHTML = t.labelGenRating;
+            document.getElementById('selectRatingOpt').innerHTML = t.selectRatingOpt;
+            document.getElementById('block2Title').innerHTML = t.block2Title;
+            document.getElementById('labelAtmo').innerHTML = t.labelAtmo;
+            document.getElementById('selectAtmoOpt').innerHTML = t.selectAtmoOpt;
+            document.getElementById('block3Title').innerHTML = t.block3Title;
+            document.getElementById('labelConn').innerHTML = t.labelConn;
+            document.getElementById('block4Title').innerHTML = t.block4Title;
+            document.getElementById('labelLoc').innerHTML = t.labelLoc;
+            document.getElementById('block5Title').innerHTML = t.block5Title;
+            document.getElementById('labelImprovements').innerHTML = t.labelImprovements;
+            document.getElementById('pref1').innerHTML = t.pref1;
+            document.getElementById('pref2').innerHTML = t.pref2;
+            document.getElementById('pref3').innerHTML = t.pref3;
+            document.getElementById('block6Title').innerHTML = t.block6Title;
+            document.getElementById('labelFinal').innerHTML = t.labelFinal;
+            document.getElementById('submitBtn').innerHTML = t.submitBtn;
+            document.getElementById('successTitle').innerHTML = t.successTitle;
+            document.getElementById('successText').innerHTML = t.successText;
+            document.getElementById('footerBack').innerHTML = t.footerBack;
+
+            document.getElementById('html-root').setAttribute('lang', currentLang);
+        }
+
+        function handleFeedbackSubmit(event) {
+            event.preventDefault();
+            document.getElementById('formContent').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
